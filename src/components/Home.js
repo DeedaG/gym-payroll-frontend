@@ -6,9 +6,10 @@ const Home = () => (
   <div>
     <br></br>
     <br></br>
-
-        <h2>Time Sheet</h2>
-      <h4>please <Link to="/login"> Log In </Link> </h4>
+      <h1>Time Sheet</h1>
+      <span>
+        <h1><Link to="/signup">Sign Up</Link> or <Link to="/login">Log In</Link></h1>
+      </span>
   </div>
 )
 export default Home;
