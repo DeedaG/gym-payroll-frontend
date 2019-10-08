@@ -1,4 +1,5 @@
 import { resetLoginForm } from "./loginForm.js";
+import { resetSignupForm } from "./signupForm.js"
 
 export const setCurrentUser = user => {
   return {
@@ -42,7 +43,35 @@ export const login = (info, history) => {
     }
   }
 
-// clear the session
+
+  export const signup = (credentials, history) => {
+  return dispatch => {
+    const userInfo = {
+      user: credentials
+    }
+    return fetch("http://localhost:3000/api/v1/signup", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userInfo)
+    })
+      .then(r => r.json())
+      .then(response => {
+        if (response.error) {
+          alert(response.error)
+        } else {
+          dispatch(setCurrentUser(response.data))
+          dispatch(resetSignupForm())
+          history.push('/')
+        }
+      })
+      .catch(console.log)
+  }
+}
+
+
   export const logout = () => {
     return dispatch => {
 
@@ -58,7 +87,7 @@ export const login = (info, history) => {
 
   export const getCurrentUser = () => {
     return dispatch => {
-      return fetch("http://localhost:3000/api/v1/get_current_user",
+      return fetch('http://localhost:3000/api/v1/get_current_user',
       {
         credentials: "include",
         method: 'GET',
