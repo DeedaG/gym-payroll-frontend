@@ -1,7 +1,7 @@
 import React from 'react'
 import { updateNewPayrollForm } from '../actions/NewPayrollForm.js'
 import { connect } from 'react-redux'
-// import GroupCheckbox from './GroupCheckbox.js'
+import GroupCheckbox from './GroupCheckbox.js'
 
 
 const NewPayrollForm = ({ formData, updateNewPayrollForm, userId, handleSubmit, editMode }) => {
