@@ -6,7 +6,7 @@ const Home = () => (
   <div>
     <br></br>
     <br></br>
-      <h1>Time Sheet</h1>
+      <h1>Payroll</h1>
       <span>
         <h1><Link to="/signup">Sign Up</Link> or <Link to="/login">Log In</Link></h1>
       </span>
