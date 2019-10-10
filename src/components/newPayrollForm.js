@@ -24,23 +24,26 @@ const NewPayrollForm = ({ formData, updateNewPayrollForm, userId, handleSubmit, 
         onChange={handleChange}
         value={payPeriod}
       /><br/>
-      <input
-        placeholder="total"
-        name="total"
-        onChange={handleChange}
-        value={total}
-      /><br/>
-      </select>
-        <br></br>
         <GroupCheckbox />
+      <br/>
+
           <input
             type="submit"
             value={editMode ? "Update Payroll" : "Create Payroll"}
+
+          /><br/>
+          <input
+            placeholder="total"
+            name="total"
+            onChange={handleChange}
+            value={total}
           />
       </form>
+
   )};
 
 const mapStateToProps = state => {
+  // debugger
   const userId = state.currentUser ? state.currentUser.id : ""
     return {
       formData: state.newPayrollForm,
