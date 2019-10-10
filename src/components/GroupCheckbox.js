@@ -1,11 +1,10 @@
 import React from 'react'
-import { updateNewPayrollForm } from '../actions/newPayrollForm.js'
+import { updateNewPayrollForm } from '../actions/NewPayrollForm.js'
 import { connect } from 'react-redux'
 
 
 class GroupCheckbox extends React.Component {
   state = {
-    // loan: "",
     checkedGroups: []
   }
 
@@ -18,7 +17,6 @@ class GroupCheckbox extends React.Component {
         checkedGroups: this.state.checkedGroups.concat([value])
         },
         function () {
-          // console.log(this.state.checkedLoans);
           this.props.updateNewPayrollForm("groups", this.state.checkedGroups)
         })
 
@@ -31,11 +29,11 @@ class GroupCheckbox extends React.Component {
  }
 
   render() {
-
+// debugger
   return (
     <div >
      {this.props.groups.map((group, index) =>
-       <li key = {group.id}>
+       <li key = {group.id}> {group.attributes.name}
        <><input
        name="groups"
        type="checkbox"
