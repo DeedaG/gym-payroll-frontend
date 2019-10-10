@@ -7,6 +7,8 @@ import Logout from './components/Logout.js';
 import Login from './components/Login.js';
 import Home from './components/Home.js';
 import './App.css';
+import newPayrollForm from './components/newPayrollForm.js'
+import groups from './components/groups.js'
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 class App extends React.Component {
@@ -20,11 +22,13 @@ class App extends React.Component {
     const { loggedIn } = this.props
   return (
     <div className="App">
-      
+
        {loggedIn ? <NavBar/> : <Home/> }
       <Switch>
         <Route exact path='/login' component={Login}></Route>
         <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
+        <Route exact path='/payrolls/new' component={newPayrollForm}/>
+        <Route exact path='/groups' component={groups}/>
       </Switch>
     </div>
   );
