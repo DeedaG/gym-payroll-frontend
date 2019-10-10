@@ -21,6 +21,20 @@
   color: #09d3ac;
 }
 
+.NavBar {
+  background-color: silver;
+  font-size: calc(10px + 2vmin);
+  min-height: 10vh;
+}
+
+.Home {
+  background-color: darkgray;
+  font-size: calc(10px + 2vmin);
+  min-height: 10vh;
+  color: black;
+}
+
+
 .App {
   background-color: purple;
   color: silver;
