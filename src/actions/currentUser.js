@@ -1,5 +1,6 @@
 import { resetLoginForm } from "./loginForm.js";
 import { resetSignupForm } from "./signupForm.js"
+import { getMyGroups} from './groups.js'
 
 export const setCurrentUser = user => {
   return {
@@ -34,7 +35,6 @@ export const login = (info, history) => {
           alert(response.error)
         } else {
           dispatch(setCurrentUser(response.data))
-
           dispatch(resetLoginForm())
           history.push('/')
         }
@@ -101,7 +101,7 @@ export const login = (info, history) => {
             alert(response.error)
           } else {
             dispatch(setCurrentUser(response.data))
-
+            dispatch(getMyGroups())
           }
         })
         .catch(console.log)
