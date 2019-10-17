@@ -20,7 +20,7 @@ class App extends React.Component {
 
 
   render() {
-    const { loggedIn, payrolls, groups } = this.props
+    const { loggedIn } = this.props
   return (
     <div className="App">
 
