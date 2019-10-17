@@ -1,16 +1,25 @@
 import React from 'react'
 import { updateNewPayrollForm } from '../actions/NewPayrollForm.js'
+import { createPayroll } from '../actions/payrolls.js'
 import { connect } from 'react-redux'
 import GroupCheckbox from './GroupCheckbox.js'
+// import ChooseDate from './ChooseDate.js';
 
 
-const NewPayrollForm = ({ formData, updateNewPayrollForm, userId, handleSubmit, editMode }) => {
+const NewPayrollForm = ({ formData, createPayroll, history, updateNewPayrollForm, userId, editMode }) => {
   const { payPeriod, total } = formData
 
   const handleChange = event => {
     const { name, value } = event.target
     updateNewPayrollForm(name,value)
   }
+
+  const handleSubmit = (formData, userId) => {
+    createPayroll({
+      ...formData,
+      userId
+      }, history)
+    };
 
   return (
 
@@ -24,7 +33,7 @@ const NewPayrollForm = ({ formData, updateNewPayrollForm, userId, handleSubmit, 
         onChange={handleChange}
         value={payPeriod}
       /><br/>
-        <GroupCheckbox />
+      <GroupCheckbox />
       <br/>
 
           <input
@@ -52,4 +61,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updateNewPayrollForm })(NewPayrollForm);
+export default connect(mapStateToProps, { createPayroll, updateNewPayrollForm })(NewPayrollForm);
