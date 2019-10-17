@@ -20,7 +20,11 @@ class GroupCheckbox extends React.Component {
         },
         function () {
           this.props.updateNewPayrollForm("groups", this.state.checkedGroups)
-        })
+        },
+        function () {
+          this.props.updateNewPayrollForm("workdate", this.state.workdate)
+        }
+      )
 
     } else {
       this.setState({
