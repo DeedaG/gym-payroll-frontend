@@ -67,6 +67,7 @@ export const createPayroll = ( payrollData, history ) => {
     console.log(payrollData)
     const sendablePayrollData = {
         payPeriod: payrollData.payPeriod,
+        total: payrollData.total,
         groups: payrollData.groups
     }
     return fetch('http://localhost:3000/api/v1/payrolls', {
