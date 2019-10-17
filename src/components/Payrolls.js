@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 class Payrolls extends React.Component {
   state = {
     displaySorted: false,
-    inputDate: null,
-    compareDate: null
+    inputDate: 0,
+    compareDate: 0
    }
 
    handleChange=(event)=> {
@@ -20,7 +20,7 @@ class Payrolls extends React.Component {
      event.preventDefault()
       this.setState({
         compareDate: this.state.inputDate,
-        inputDate: null
+        inputDate: 0
       })
    }
 
@@ -69,7 +69,8 @@ render() {
 
   const mapStateToProps = state => {
     return {
-      payrolls: state.payrolls
+      payrolls: state.payrolls,
+
     }
   }
 
