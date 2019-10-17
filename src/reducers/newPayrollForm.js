@@ -1,6 +1,7 @@
 const initialState = {
     payPeriod: "",
     total: "",
+    workdate: "",
     groups: ""
 }
 
