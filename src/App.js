@@ -20,7 +20,7 @@ class App extends React.Component {
 
 
   render() {
-    const { loggedIn } = this.props
+    const { loggedIn, payrolls, groups } = this.props
   return (
     <div className="App">
 
@@ -39,7 +39,9 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
 return ({
-  loggedIn: !!state.currentUser
+  loggedIn: !!state.currentUser,
+    payrolls: state.payrolls,
+    groups: state.groups
   })
 }
 
