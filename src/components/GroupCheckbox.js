@@ -1,5 +1,5 @@
 import React from 'react'
-import { updateNewPayrollForm } from '../actions/NewPayrollForm.js'
+import { updateNewPayrollForm } from '../actions/payrollForm.js'
 import { connect } from 'react-redux'
 import Calendar from 'react-calendar';
 
@@ -20,21 +20,22 @@ class GroupCheckbox extends React.Component {
         },
         function () {
           this.props.updateNewPayrollForm("groups", this.state.checkedGroups)
-        },
-        function () {
-          this.props.updateNewPayrollForm("workdate", this.state.workdate)
         }
       )
 
     } else {
       this.setState({
         checkedGroups : []
-      })
+      },
+    )
    }
 
  }
 
- onChange = workdate => this.setState({ workdate })
+   onChange = workdate => this.setState({ workdate },
+     function () {
+       this.props.updateNewPayrollForm("workdate", this.state.workdate)
+     })
 
   render() {
 // debugger
@@ -60,8 +61,7 @@ class GroupCheckbox extends React.Component {
   const mapStateToProps = state => {
      // debugger
     return {
-      groups: state.groups,
-      payroll: state.newPayrollForm
+      groups: state.groups
     }
   }
 
