@@ -1,6 +1,6 @@
 import React from 'react'
-import { updatePayroll, deletePayroll } from '../actions/Payrolls.js'
-import { setFormDataForEdit, resetNewPayrollForm } from '../actions/newPayrollForm.js'
+import { updatePayroll, deletePayroll } from '../actions/payrolls.js'
+import { setFormDataForEdit, resetNewPayrollForm } from '../actions/payrollForm.js'
 import { connect } from 'react-redux'
 import NewPayrollForm from '../components/NewPayrollForm.js'
 
