@@ -13,8 +13,8 @@ const NewPayrollContainer = ({ history, createPayroll }) => {
         }, history)
       }
 
-
   return (
+
     <NewPayrollForm history={history} handleSubmit={handleSubmit} />
   )
 };
