@@ -14,13 +14,11 @@ const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId, 
   }
 
   return (
-
     <form onSubmit = {event => {
-      event.preventDefault()
-      handleSubmit(formData, userId)
-        }}>
+      event.preventDefault();
+        handleSubmit(formData)
+      }}>
       <br></br>
-
       <input
         placeholder="payPeriod"
         name="payPeriod"
@@ -38,10 +36,8 @@ const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId, 
           <input
             type="submit"
             value={editMode ? "Update Payroll" : "Create Payroll"}
-
           /><br/>
       </form>
-
   )};
 
 const mapStateToProps = state => {
