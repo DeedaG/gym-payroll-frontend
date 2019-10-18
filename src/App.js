@@ -7,7 +7,7 @@ import Logout from './components/Logout.js';
 import Login from './components/Login.js';
 import Home from './components/Home.js';
 import './App.css';
-import NewPayrollForm from './components/NewPayrollForm.js'
+import NewPayrollContainer from './containers/NewPayrollContainer.js'
 import Groups from './components/Groups.js'
 import Payrolls from './components/Payrolls.js'
 import { Route, Switch, withRouter } from 'react-router-dom';
@@ -28,7 +28,7 @@ class App extends React.Component {
       <Switch>
         <Route exact path='/login' component={Login}></Route>
         <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
-        <Route exact path='/payrolls/new' component={NewPayrollForm}/>
+        <Route exact path='/payrolls/new' component={NewPayrollContainer}/>
         <Route exact path='/payrolls' component={Payrolls}/>
         <Route exact path='/groups' component={Groups}/>
       </Switch>
