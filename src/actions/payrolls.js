@@ -1,4 +1,4 @@
-import { resetNewPayrollForm } from './NewPayrollForm'
+import { resetNewPayrollForm } from './payrollForm.js'
 
 
 export const setMyPayrolls = payrolls => {
@@ -98,6 +98,7 @@ export const updatePayroll = ( payrollData, history ) => {
     const sendablePayrollData = {
         id: payrollData.id,
         payPeriod: payrollData.payPeriod,
+        workdate: payrollData.workdate,
         groups: payrollData.groups
     }
     return fetch(`http://localhost:3000/api/v1/payrolls/${payrollData.payrollId}`, {
