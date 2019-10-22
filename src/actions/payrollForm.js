@@ -18,6 +18,7 @@ export const setFormDataForEdit = payroll => {
   const payrollFormData = {
     payPeriod: payroll.attributes.payPeriod,
     total: payroll.attributes.total,
+    workdate: payroll.attributes.workdate,
     groups: payroll.attributes.groups
   }
   console.log("payrollFormData:", payrollFormData)

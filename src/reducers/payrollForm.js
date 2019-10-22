@@ -1,6 +1,7 @@
 const initialState = {
     payPeriod: "",
     total: "",
+    workdate: "",
     groups: ""
 }
 
@@ -9,6 +10,7 @@ export default (state=initialState, action) => {
   switch (action.type) {
     case 'UPDATE_NEW_PAYROLL_FORM':
       return {
+
         ...state,
         [action.formData.name]: action.formData.value }
     case 'RESET_NEW_PAYROLL_FORM':

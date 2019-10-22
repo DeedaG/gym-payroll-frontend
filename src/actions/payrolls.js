@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { resetNewPayrollForm } from './newPayrollForm'
+=======
+import { resetNewPayrollForm } from './payrollForm.js'
+
+>>>>>>> 171935c1e35a5ae988e64631118f4cb281562dd2
 
 export const setMyPayrolls = payrolls => {
   return {
@@ -54,7 +59,11 @@ export const getMyPayrolls = () => {
         if (response.error) {
           alert(response.error)
         } else {
+<<<<<<< HEAD
           dispatch(setMyPools(response.data))
+=======
+          dispatch(setMyPayrolls(response.data))
+>>>>>>> 171935c1e35a5ae988e64631118f4cb281562dd2
         }
       })
       .catch(console.log)
@@ -65,7 +74,13 @@ export const createPayroll = ( payrollData, history ) => {
   return dispatch => {
     console.log(payrollData)
     const sendablePayrollData = {
+<<<<<<< HEAD
         name: payrollData.name,
+=======
+        payPeriod: payrollData.payPeriod,
+        total: payrollData.total,
+        workdate: payrollData.workdate,
+>>>>>>> 171935c1e35a5ae988e64631118f4cb281562dd2
         groups: payrollData.groups
     }
     return fetch('http://localhost:3000/api/v1/payrolls', {
@@ -94,7 +109,12 @@ export const updatePayroll = ( payrollData, history ) => {
     console.log(payrollData)
     const sendablePayrollData = {
         id: payrollData.id,
+<<<<<<< HEAD
         name: payrollData.name,
+=======
+        payPeriod: payrollData.payPeriod,
+        workdate: payrollData.workdate,
+>>>>>>> 171935c1e35a5ae988e64631118f4cb281562dd2
         groups: payrollData.groups
     }
     return fetch(`http://localhost:3000/api/v1/payrolls/${payrollData.payrollId}`, {
