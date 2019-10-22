@@ -2,6 +2,8 @@ import currentUser from './reducers/currentUser.js'
 import loginForm from './reducers/loginForm.js'
 import signupForm from './reducers/signupForm.js'
 import payrollForm from './reducers/payrollForm.js'
+import recordForm from './reducers/recordForm.js'
+import records from './reducers/records.js'
 import payrolls from './reducers/payrolls.js'
 import groups from './reducers/groups.js'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
@@ -15,6 +17,8 @@ const reducer = combineReducers({
   loginForm,
   signupForm,
   payrollForm,
+  recordForm,
+  records,
   groups,
   payrolls
 })
