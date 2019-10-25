@@ -1,7 +1,7 @@
 import React from 'react'
 import { createPayroll } from '../actions/payrolls.js'
 import { connect } from 'react-redux'
-import NewPayrollForm from '../components/NewPayrollForm.js'
+import NewPayrollForm from '../components/newPayrollForm.js'
 
 
 const NewPayrollContainer = ({ history, createPayroll }) => {
