@@ -1,7 +1,6 @@
 import currentUser from './reducers/currentUser.js'
 import loginForm from './reducers/loginForm.js'
 import signupForm from './reducers/signupForm.js'
-import newPayrollForm from './reducers/payrollForm.js'
 import payrollForm from './reducers/payrollForm.js'
 import payrolls from './reducers/payrolls.js'
 import groups from './reducers/groups.js'
@@ -15,13 +14,9 @@ const reducer = combineReducers({
   currentUser,
   loginForm,
   signupForm,
-  newPayrollForm,
-  groups,
   payrolls,
   payrollForm,
-  groups,
-  payrolls
-
+  groups
 })
 
 // const composeEnhancer = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;

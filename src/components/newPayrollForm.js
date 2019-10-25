@@ -30,8 +30,6 @@ const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId, 
         <GroupCheckbox/>
         <br/>
         <label>Total:</label>
-
-      <GroupCheckbox />
       <br/>
         <input
           placeholder="total"
@@ -42,13 +40,7 @@ const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId, 
         <input
           type="submit"
           value={editMode ? "Update Payroll" : "Create Payroll"}
-
         /><br/>
-
-          <input
-            type="submit"
-            value={editMode ? "Update Payroll" : "Create Payroll"}
-          /><br/>
       </form>
   )};
 
