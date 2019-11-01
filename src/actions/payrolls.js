@@ -68,11 +68,10 @@ export const createPayroll = ( payrollData, history ) => {
   return dispatch => {
     console.log(payrollData)
     const sendablePayrollData = {
+        id: payrollData.id,
         name: payrollData.name,
         payPeriod: payrollData.payPeriod,
-        total: payrollData.total,
-        workdate: payrollData.workdate,
-        groups: payrollData.groups
+        records: payrollData.records
     }
     return fetch('http://localhost:3000/api/v1/payrolls', {
       credentials: 'include',
@@ -101,9 +100,7 @@ export const updatePayroll = ( payrollData, history ) => {
     const sendablePayrollData = {
         id: payrollData.id,
         name: payrollData.name,
-        payPeriod: payrollData.payPeriod,
-        workdate: payrollData.workdate,
-        groups: payrollData.groups
+        records: payrollData.records
     }
     return fetch(`http://localhost:3000/api/v1/payrolls/${payrollData.payrollId}`, {
       credentials: 'include',
