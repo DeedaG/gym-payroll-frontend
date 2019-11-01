@@ -1,8 +1,7 @@
 const initialState = {
     payPeriod: "",
     total: "",
-    workdate: "",
-    groups: ""
+    records: ""
 }
 
 export default (state=initialState, action) => {
