@@ -1,6 +1,5 @@
 import React from 'react';
 import Calendar from 'react-calendar';
-import GroupCheckbox from './GroupCheckbox.js'
 
 class ChooseDate extends Component {
   state = {
@@ -17,7 +16,6 @@ class ChooseDate extends Component {
           onChange={this.onChange}
           value={this.state.workdate}
         />
-      <GroupCheckbox workday={this.state.workdate} />
       </div>
 
     );
