@@ -1,12 +1,10 @@
 import React from 'react'
 import { updateNewPayrollForm } from '../actions/payrollForm.js'
-// import { createPayroll } from '../actions/payrolls.js';
 import { connect } from 'react-redux'
-import NewRecord from './NewRecord.js'
 
 
-const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId, editMode }) => {
-  const { payPeriod, total } = formData
+const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId }) => {
+  const { payPeriod } = formData
 
   const handleChange = event => {
     const { name, value } = event.target
@@ -21,25 +19,14 @@ const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId, 
       <br></br>
       <label>1. Enter Pay Period:</label>
       <input
-        placeholder="payPeriod"
+        placeholder="YYYY-MM-DD"
         name="payPeriod"
         onChange={handleChange}
         value={payPeriod}
-      /><br/>
-      <label>2. Choose Work Date</label>
-        <NewRecord/>
-        <br/>
-        <label>Total:</label>
-      <br/>
-        <input
-          placeholder="total"
-          name="total"
-          onChange={handleChange}
-          value={total}
-        /><br/>
+      />
         <input
           type="submit"
-          value={editMode ? "Update Payroll" : "Create Payroll"}
+          value="Enter"
         /><br/>
       </form>
   )};
@@ -50,7 +37,7 @@ const mapStateToProps = state => {
     return {
       formData: state.payrollForm,
       userId,
-      groups: state.payrollForm.groups
+      records: state.payrollForm.records
   }
 }
 
