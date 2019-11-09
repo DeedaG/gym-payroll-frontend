@@ -1,4 +1,5 @@
 import { resetNewPayrollForm } from './payrollForm.js'
+import { getMyRecords } from './records.js'
 
 
 export const setMyPayrolls = payrolls => {
@@ -55,8 +56,6 @@ export const getMyPayrolls = () => {
         if (response.error) {
           alert(response.error)
         } else {
-
-          dispatch(setMyPayrolls(response.data))
           dispatch(setMyPayrolls(response.data))
         }
       })
@@ -66,13 +65,13 @@ export const getMyPayrolls = () => {
 
 export const createPayroll = ( payrollData, history ) => {
   return dispatch => {
-    console.log(payrollData)
     const sendablePayrollData = {
-        id: payrollData.id,
-        name: payrollData.name,
         payPeriod: payrollData.payPeriod,
-        records: payrollData.records
+        total: payrollData.total,
+        records: payrollData.records,
+        user_id: payrollData.userId
     }
+    console.log("sendablePayrollData", sendablePayrollData)
     return fetch('http://localhost:3000/api/v1/payrolls', {
       credentials: 'include',
       method: 'POST',
@@ -99,7 +98,8 @@ export const updatePayroll = ( payrollData, history ) => {
     console.log(payrollData)
     const sendablePayrollData = {
         id: payrollData.id,
-        name: payrollData.name,
+        payPeriod: payrollData.payPeriod,
+        total: payrollData.total,
         records: payrollData.records
     }
     return fetch(`http://localhost:3000/api/v1/payrolls/${payrollData.payrollId}`, {
