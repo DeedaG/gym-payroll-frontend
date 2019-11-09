@@ -2,7 +2,7 @@ import React from 'react'
 import { updateNewPayrollForm } from '../actions/payrollForm.js'
 // import { createPayroll } from '../actions/payrolls.js';
 import { connect } from 'react-redux'
-import GroupCheckbox from './GroupCheckbox.js'
+import NewRecord from './NewRecord.js'
 
 
 const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId, editMode }) => {
@@ -19,15 +19,15 @@ const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId, 
         handleSubmit(formData)
       }}>
       <br></br>
-      <label>Pay Period:</label>
+      <label>1. Enter Pay Period:</label>
       <input
         placeholder="payPeriod"
         name="payPeriod"
         onChange={handleChange}
         value={payPeriod}
       /><br/>
-
-        <GroupCheckbox/>
+      <label>2. Choose Work Date</label>
+        <NewRecord/>
         <br/>
         <label>Total:</label>
       <br/>

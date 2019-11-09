@@ -1,14 +1,22 @@
 import React from 'react'
-import { updateNewPayrollForm } from '../actions/payrollForm.js'
+import { updateRecordForm } from '../actions/recordForm.js'
+import { createRecord } from '../actions/records.js'
 import { connect } from 'react-redux'
 import Calendar from 'react-calendar';
+import { withRouter } from 'react-router-dom';
 
 
-class GroupCheckbox extends React.Component {
+class NewRecord extends React.Component {
   state = {
     checkedGroups: [],
     workdate: new Date()
   }
+
+  handleClick = () => {
+      this.props.createRecord({
+        ...this.props.formData,
+      }, this.props.history)
+        }
 
   handleChangedGroups(e, value){
     console.log("target =", e.target.checked)
@@ -19,7 +27,7 @@ class GroupCheckbox extends React.Component {
         checkedGroups: this.state.checkedGroups.concat([value])
         },
         function () {
-          this.props.updateNewPayrollForm("groups", this.state.checkedGroups)
+          this.props.updateRecordForm("groups", this.state.checkedGroups)
         }
       )
 
@@ -34,7 +42,7 @@ class GroupCheckbox extends React.Component {
 
    onChange = workdate => this.setState({ workdate },
      function () {
-       this.props.updateNewPayrollForm("workdate", this.state.workdate)
+       this.props.updateRecordForm("workdate", this.state.workdate)
      })
 
   render() {
@@ -45,14 +53,16 @@ class GroupCheckbox extends React.Component {
       <Calendar
         onChange={this.onChange}
         value={this.state.workdate}
-      />
+      />3. Choose Classes
       {this.props.groups.map((group, index) =>
-     <li key = {group.id}> {group.attributes.name}
+     <li key = {group.id}>{group.attributes.name}
      <><input
        name="groups"
        type="checkbox"
        onClick={(e)=>this.handleChangedGroups(e,group)}
     />{group.attributes.hours}<br></br></></li>)}
+    <label>4. Add Work Day to Time Card</label>
+    <button onClick={this.handleClick}>Add</button>
     </div>
      )
     }
@@ -61,8 +71,9 @@ class GroupCheckbox extends React.Component {
   const mapStateToProps = state => {
      // debugger
     return {
-      groups: state.groups
+      groups: state.groups,
+      formData: state.recordForm,
     }
   }
 
-  export default connect(mapStateToProps,{updateNewPayrollForm})(GroupCheckbox)
+  export default withRouter(connect(mapStateToProps,{updateRecordForm, createRecord})(NewRecord))
