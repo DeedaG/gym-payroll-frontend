@@ -1,5 +1,6 @@
 import React from 'react'
 import { updateRecordForm } from '../actions/recordForm.js'
+import { updateNewPayrollForm } from '../actions/payrollForm.js'
 import { createRecord } from '../actions/records.js'
 import { connect } from 'react-redux'
 import Calendar from 'react-calendar';
@@ -14,8 +15,9 @@ class NewRecord extends React.Component {
 
   handleClick = () => {
       this.props.createRecord({
-        ...this.props.formData,
+        ...this.props.recordData
       }, this.props.history)
+      this.props.updateNewPayrollForm("records", this.props.recordData)
         }
 
   handleChangedGroups(e, value){
@@ -50,7 +52,9 @@ class NewRecord extends React.Component {
   return (
 
     <div >
+      <label>2. Choose Day</label>
       <Calendar
+        name="workdate"
         onChange={this.onChange}
         value={this.state.workdate}
       />3. Choose Classes
@@ -60,20 +64,20 @@ class NewRecord extends React.Component {
        name="groups"
        type="checkbox"
        onClick={(e)=>this.handleChangedGroups(e,group)}
-    />{group.attributes.hours}<br></br></></li>)}
-    <label>4. Add Work Day to Time Card</label>
-    <button onClick={this.handleClick}>Add</button>
+      />{group.attributes.hours}<br></br></></li>)}
+      <label>4. Add Work Day to Time Card</label>
+      <button onClick={this.handleClick}>Add</button>
     </div>
      )
     }
   }
 
   const mapStateToProps = state => {
-     // debugger
+    // debugger
     return {
       groups: state.groups,
-      formData: state.recordForm,
+      recordData: state.recordForm
     }
   }
 
-  export default withRouter(connect(mapStateToProps,{updateRecordForm, createRecord})(NewRecord))
+  export default withRouter(connect(mapStateToProps,{updateRecordForm, updateNewPayrollForm, createRecord})(NewRecord))
