@@ -1,6 +1,6 @@
 import React from 'react'
 import { updateRecordForm } from '../actions/recordForm.js'
-import { updateNewPayrollForm } from '../actions/payrollForm.js'
+import { updatePayroll } from '../actions/payrolls.js'
 import { createRecord } from '../actions/records.js'
 import { connect } from 'react-redux'
 import Calendar from 'react-calendar';
@@ -10,14 +10,20 @@ import { withRouter } from 'react-router-dom';
 class NewRecord extends React.Component {
   state = {
     checkedGroups: [],
-    workdate: new Date()
+    workdate: new Date(),
+    payrollData: {
+      id: this.props.match.params.id,
+      records: this.props.recordData
+    }
   }
 
   handleClick = () => {
       this.props.createRecord({
-        ...this.props.recordData
+        ...this.props.recordData,
+        ...this.state.payrollData,
       }, this.props.history)
-      this.props.updateNewPayrollForm("records", this.props.recordData)
+      // debugger
+      this.props.updatePayroll(this.state.payrollData, this.props.history)
         }
 
   handleChangedGroups(e, value){
@@ -73,11 +79,10 @@ class NewRecord extends React.Component {
   }
 
   const mapStateToProps = state => {
-    // debugger
     return {
       groups: state.groups,
       recordData: state.recordForm
     }
   }
 
-  export default withRouter(connect(mapStateToProps,{updateRecordForm, updateNewPayrollForm, createRecord})(NewRecord))
+  export default withRouter(connect(mapStateToProps,{updateRecordForm, updatePayroll, createRecord})(NewRecord))
