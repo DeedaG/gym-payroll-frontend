@@ -1,6 +1,4 @@
 import { resetRecordForm } from './recordForm.js'
-import { updatePayroll } from './payrolls.js'
-
 
 export const setMyRecords = records => {
   return {
@@ -56,8 +54,6 @@ export const getMyRecords = () => {
         if (response.error) {
           alert(response.error)
         } else {
-
-          dispatch(setMyRecords(response.data))
           dispatch(setMyRecords(response.data))
         }
       })
@@ -68,12 +64,12 @@ export const getMyRecords = () => {
 export const createRecord = ( recordData, history ) => {
   return dispatch => {
     const sendableRecordData = {
-        id: recordData.id,
         workdate: recordData.workdate,
         totalHours: recordData.totalHours,
         groups: recordData.groups
     }
-    return fetch(`http://localhost:3000/api/v1/payrolls/${sendableRecordData.payroll_id}/records`, {
+    console.log("sendableRecordData", sendableRecordData)
+    return fetch(`http://localhost:3000/api/v1/records`, {
       credentials: 'include',
       method: 'POST',
       headers: {
@@ -83,6 +79,7 @@ export const createRecord = ( recordData, history ) => {
     })
     .then(r => r.json())
     .then(resp => {
+      // console.log("data", resp)
       if (resp.error) {
         alert(resp.error)
       }else{
@@ -98,6 +95,7 @@ export const updateRecord = ( recordData, history ) => {
   return dispatch => {
     console.log(recordData)
     const sendableRecordData = {
+        id: recordData.id,
         workdate: recordData.workdate,
         totalHours: recordData.totalHours,
         groups: recordData.groups
