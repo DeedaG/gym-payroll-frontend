@@ -95,14 +95,14 @@ export const createPayroll = ( payrollData, history ) => {
 
 export const updatePayroll = ( payrollData, history ) => {
   return dispatch => {
-    console.log(payrollData)
+    // console.log(payrollData)
+    // debugger
     const sendablePayrollData = {
         id: payrollData.id,
-        payPeriod: payrollData.payPeriod,
         total: payrollData.total,
         records: payrollData.records
     }
-    return fetch(`http://localhost:3000/api/v1/payrolls/${payrollData.payrollId}`, {
+    return fetch(`http://localhost:3000/api/v1/payrolls/${payrollData.id}`, {
       credentials: 'include',
       method: 'PATCH',
       headers: {
@@ -110,11 +110,14 @@ export const updatePayroll = ( payrollData, history ) => {
       },
       body: JSON.stringify(sendablePayrollData)
     })
+    // console.log("sendablePayrollData", sendablePayrollData)
     .then(r => r.json())
     .then(resp => {
       if (resp.error) {
         alert(resp.error)
-      }else {
+      }else
+      // console.log("resp.data",resp.data)
+      {
       dispatch(updatePayrollSuccess(resp.data))
       history.push(`/payrolls/${resp.data.id}`)
      }
