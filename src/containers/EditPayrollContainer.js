@@ -31,7 +31,7 @@ class EditPayrollContainer extends React.Component {
     const { history, payroll, deletePayroll } = this.props
     const payrollId = payroll ? payroll.id : null
     return <>
-        <PayrollCard editMode handleSubmit={this.handleSubmit} />
+        <PayrollCard handleSubmit={this.handleSubmit} />
         <br/>
         <button style={{color:"red"}} onClick={()=>deletePayroll(payrollId, history)}>Delete Payroll</button>
       </>
