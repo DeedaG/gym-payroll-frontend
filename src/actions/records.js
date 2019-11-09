@@ -63,10 +63,12 @@ export const getMyRecords = () => {
 
 export const createRecord = ( recordData, history ) => {
   return dispatch => {
+    // debugger
     const sendableRecordData = {
         workdate: recordData.workdate,
         totalHours: recordData.totalHours,
-        groups: recordData.groups
+        groups: recordData.groups,
+        payroll_id: recordData.id
     }
     console.log("sendableRecordData", sendableRecordData)
     return fetch(`http://localhost:3000/api/v1/records`, {
