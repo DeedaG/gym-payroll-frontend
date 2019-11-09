@@ -11,6 +11,7 @@ import NewRecord from './components/NewRecord.js'
 // import NewPayrollForm from './components/NewPayrollForm.js'
 import EditPayrollContainer from './containers/EditPayrollContainer.js'
 import NewPayrollContainer from './containers/NewPayrollContainer.js'
+import RecordCard from './components/RecordCard.js'
 import PayrollCard from './components/PayrollCard.js'
 import Groups from './components/Groups.js'
 import Payrolls from './components/Payrolls.js'
@@ -36,9 +37,9 @@ class App extends React.Component {
         <Route exact path='/groups' component={Groups}/>
         <Route exact path='/payrolls' component={Payrolls}/>
         <Route exact path='/records/new' component={NewRecord}/>
-        <Route exact path='/records/:id/edit' render={props => {
+        <Route exact path='/records/:id' render={props => {
           const record = records.find(record => record.id === props.match.params.id)
-        return <PayrollCard record={record} {...props}/>
+            return <RecordCard record={record} {...props}/>
           }}></Route>
         <Route exact path='/payrolls/new' component={NewPayrollContainer}/>
         <Route exact path='/payrolls/:id' render={props => {
