@@ -16,9 +16,9 @@ export const  resetNewPayrollForm = () => {
 export const setFormDataForEdit = payroll => {
 
   const payrollFormData = {
+    id: payroll.attributes.id,
     payPeriod: payroll.attributes.payPeriod,
     total: payroll.attributes.total,
-    workdate: payroll.attributes.workdate,
     records: payroll.attributes.records
   }
   console.log("payrollFormData:", payrollFormData)
