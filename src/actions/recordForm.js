@@ -14,18 +14,10 @@ export const  resetRecordForm = () => {
 }
 
 export const setFormDataForEdit = record => {
-  const hours = record.attributes.groups.map(group =>
-    group.attributes.hours.map(hour =>
-    hour))
-  debugger
-  const add = hours.reduce(myFunc);
-    function myFunc(total, num) {
-      return total + num;
-    }
   const recordFormData = {
     id: record.attributes.id,
     workdate: record.attributes.workdate,
-    totalHours: add,
+    totalHours: record.attributes.totalHours,
     groups: record.attributes.groups
   }
   console.log("recordFormData:", recordFormData)
