@@ -12,4 +12,4 @@ const Home = () => (
       </span>
   </div>
 )
-export default Home;
+export default (Home);
