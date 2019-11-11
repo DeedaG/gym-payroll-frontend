@@ -95,8 +95,6 @@ export const createPayroll = ( payrollData, history ) => {
 
 export const updatePayroll = ( payrollData, history ) => {
   return dispatch => {
-    // console.log(payrollData)
-    // debugger
     const sendablePayrollData = {
         id: payrollData.id,
         total: payrollData.total,
@@ -110,13 +108,13 @@ export const updatePayroll = ( payrollData, history ) => {
       },
       body: JSON.stringify(sendablePayrollData)
     })
-    // console.log("sendablePayrollData", sendablePayrollData)
+    console.log("sendablePayrollData", sendablePayrollData)
     .then(r => r.json())
     .then(resp => {
       if (resp.error) {
         alert(resp.error)
       }else
-      // console.log("resp.data",resp.data)
+      console.log("resp.data",resp.data)
       {
       dispatch(updatePayrollSuccess(resp.data))
       history.push(`/payrolls/${resp.data.id}`)
