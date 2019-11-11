@@ -63,14 +63,23 @@ export const getMyRecords = () => {
 
 export const createRecord = ( recordData, history ) => {
   return dispatch => {
-    // debugger
+
+    const workedGroups = recordData.groups
+    const workHours = workedGroups.map(group =>
+      parseInt(group.attributes.hours))
+    const add = workHours.reduce(myFunc);
+    function myFunc(total, num) {
+      return total + num;
+    }
+
     const sendableRecordData = {
         workdate: recordData.workdate,
-        totalHours: recordData.totalHours,
+        totalHours: add,
         groups: recordData.groups,
         payroll_id: recordData.id
     }
-    console.log("sendableRecordData", sendableRecordData)
+    // debugger
+    console.log("sendableRecordData.totalHours", sendableRecordData)
     return fetch(`http://localhost:3000/api/v1/records`, {
       credentials: 'include',
       method: 'POST',
@@ -81,13 +90,13 @@ export const createRecord = ( recordData, history ) => {
     })
     .then(r => r.json())
     .then(resp => {
-      // console.log("data", resp)
+      console.log("resp", resp)
       if (resp.error) {
         alert(resp.error)
       }else{
-      dispatch(addRecord(resp.data))
+      dispatch(addRecord(resp))
       dispatch(resetRecordForm())
-      history.push(`records/${resp.data.id}`)
+      history.push(`records/${resp.id}`)
      }
     })
   }
