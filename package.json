@@ -9,7 +9,7 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "redux": "^4.0.4",
+    "redux": "^4.0.5",
     "redux-thunk": "github:reduxjs/redux-thunk#master"
   },
   "scripts": {
