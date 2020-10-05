@@ -8,9 +8,11 @@ const PayrollCard = ({payroll}) => {
     return total + num;
   }
 
-  const calculateTotalRecordHours = payroll ?
-    payroll.attributes.records.map(record =>
-      parseInt(record.totalHours)).reduce(myFunc)
+  const calculateTotalRecordHours =
+  payroll ?
+    payroll.attributes.records.map(
+      record =>
+      parseInt(record.totalHours)).reduce(myFunc, 0)
       : null
 
   return (

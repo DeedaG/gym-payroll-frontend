@@ -5,6 +5,7 @@ export default (state = [], action) => {
     case "SET_MY_PAYROLLS":
       return action.payrolls
     case "ADD_PAYROLL":
+    debugger
       return state.concat(action.payroll)
 
     case "UPDATE_PAYROLL":

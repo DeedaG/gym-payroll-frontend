@@ -34,6 +34,15 @@
   color: black;
 }
 
+.PayrollList {
+  color: silver;
+  font-size: calc(8px + 2vmin);
+  min-height: 10vh;
+}
+
+.PayrollList-payrollList {
+  color: black;
+}
 
 .App {
   background-color: purple;
