@@ -1,5 +1,4 @@
 import { resetNewPayrollForm } from './payrollForm.js'
-import { getMyRecords } from './records.js'
 
 
 export const setMyPayrolls = payrolls => {

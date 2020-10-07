@@ -5,7 +5,6 @@ export default (state = [], action) => {
     case "SET_MY_RECORDS":
       return action.records
     case "ADD_RECORD":
-     debugger
       return state.concat(action.record)
     case "UPDATE_RECORD":
       return state.map(record => record.id === action.record.id ? action.record : record)

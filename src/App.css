@@ -22,6 +22,8 @@
 }
 
 .NavBar {
+  text-align: left;
+  padding: 50px;
   background-color: silver;
   font-size: calc(10px + 2vmin);
   min-height: 10vh;
@@ -36,6 +38,8 @@
 
 .PayrollList {
   color: silver;
+  text-align: left;
+  padding: 50px;
   font-size: calc(8px + 2vmin);
   min-height: 10vh;
 }
@@ -43,6 +47,17 @@
 .PayrollList-payrollList {
   color: black;
 }
+
+.material-icons.darkgray {
+    padding: 20px;
+    position: relative;
+    animation: stars 3s linear;
+  color: #696969; }
+
+  @keyframes stars {
+    0%   {color:#696969; left:0px; bottom:0px;}
+    50%  {color:purple; left:140px; bottom:300px;}
+  }
 
 .App {
   background-color: purple;

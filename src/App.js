@@ -52,6 +52,12 @@ class App extends React.Component {
           props.match.params.id)
         return <EditPayrollContainer payroll={payroll} {...props}/>
         }}/>
+      <Route exact path='/payrolls/:id/delete' render={props => {
+        const payroll = payrolls.find(payroll => payroll.id ===
+          props.match.params.id)
+        return <EditPayrollContainer payroll={payroll} {...props}/>
+        }}/>
+
       </Switch>
     </div>
   );

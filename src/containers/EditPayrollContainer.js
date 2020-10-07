@@ -3,7 +3,7 @@ import { updatePayroll, deletePayroll } from '../actions/payrolls.js'
 import { setFormDataForEdit, resetNewPayrollForm } from '../actions/payrollForm.js'
 import { connect } from 'react-redux'
 import PayrollCard from '../components/PayrollCard.js'
-
+import EditPayrollForm from '../components/EditPayrollForm.js'
 
 class EditPayrollContainer extends React.Component {
 
@@ -21,9 +21,9 @@ class EditPayrollContainer extends React.Component {
   }
 
   handleSubmit = (formData) => {
-    const { updatePayroll, payroll, history } = this.props
+    const { updatePayroll, history } = this.props
     updatePayroll({
-      payrollId: payroll.id,
+      payrollId: this.props.match.params.id,
       ...formData
     }, history)
   }
@@ -31,7 +31,7 @@ class EditPayrollContainer extends React.Component {
     const { history, payroll, deletePayroll } = this.props
     const payrollId = payroll ? payroll.id : null
     return <>
-        <PayrollCard handleSubmit={this.handleSubmit} />
+        <EditPayrollForm history={history} handleSubmit={this.handleSubmit}/>
         <br/>
         <button style={{color:"red"}} onClick={()=>deletePayroll(payrollId, history)}>Delete Payroll</button>
       </>

@@ -19,10 +19,17 @@ const Login = ({ loginFormData, updateLoginForm, login, history }) => {
     login(loginFormData, history)
   }
 
+  const mystyle = {
+        color: "black",
+        backgroundColor: "silver",
+        padding: "8px",
+        fontFamily: "Arial"
+      };
+
   return (
     <form onSubmit={handleSubmit}>
-      <input placeholder="username" value={loginFormData.username} type="text" name="username" onChange={handleChange} />
-      <input placeholder="password" value={loginFormData.password} type="text" name="password" onChange={handleChange}/>
+      <input style={mystyle} placeholder="username" value={loginFormData.username} type="text" name="username" onChange={handleChange} />
+      <input style={mystyle} placeholder="password" value={loginFormData.password} type="text" name="password" onChange={handleChange}/>
       <input type="submit" value="Log In" />
     </form>
   )

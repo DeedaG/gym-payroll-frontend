@@ -1,7 +1,7 @@
 import { resetLoginForm } from "./loginForm.js";
 import { resetSignupForm } from "./signupForm.js"
-import { getMyPayrolls, clearMyPayrolls } from "./payrolls.js"
-import { getMyRecords, clearMyRecords } from "./records.js"
+import { getMyPayrolls } from "./payrolls.js"
+import { getMyRecords } from "./records.js"
 import { getMyGroups} from './groups.js'
 
 export const setCurrentUser = user => {

@@ -1,6 +1,6 @@
 import React from 'react'
-import NewRecord from './NewRecord.js'
-// import { connect } from 'react-redux'
+import EditPayrollForm from './EditPayrollForm.js'
+import { Link } from 'react-router-dom'
 
 const PayrollCard = ({payroll}) => {
 
@@ -23,7 +23,10 @@ const PayrollCard = ({payroll}) => {
         <li key={record.id}>{record.workdate} - {record.totalHours} hours</li>
         )}<br></br>
     Grand Total:<h1>{calculateTotalRecordHours} hours</h1>
-      <NewRecord/>
+
+    <Link to ={`/payrolls/${payroll.id}/edit`}
+      key={payroll.attributes.id} style={{color: "silver"}}>Add/Edit
+      </Link>
     </div>
      :
       null
