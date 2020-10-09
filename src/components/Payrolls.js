@@ -6,10 +6,13 @@ const Payrolls = ({payrolls}) => {
 // debugger
   const payrollCards =  payrolls.length > 0 ? payrolls.map(payroll =>
 
-    	<li id="payrollList" key = {payroll.id}><><Link to ={`/payrolls/${payroll.id}`}
-        key={payroll.attributes.id} style={{color: "black"}}>
+    	<ul id="payrollList" key = {payroll.id}>
+        <span className="material-icons money">
+      monetization_on
+      </span><><Link to ={`/payrolls/${payroll.id}`}
+        key={payroll.attributes.id} style={{color: "silver"}}>
           {payroll.attributes.payPeriod}
-        </Link><br></br><br></br></></li>) : null
+        </Link><br></br></></ul>) : null
 
   return (
     <div className="PayrollList">{payrollCards}</div>

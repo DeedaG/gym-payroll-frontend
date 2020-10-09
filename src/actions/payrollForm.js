@@ -13,10 +13,10 @@ export const  resetNewPayrollForm = () => {
   }
 }
 
-export const setFormDataForEdit = payroll => {
+export const setFormDataForEdit = (payroll) => {
 
   const payrollFormData = {
-    id: payroll.attributes.id,
+    id: payroll.id,
     payPeriod: payroll.attributes.payPeriod,
     total: payroll.attributes.total,
     records: payroll.attributes.records

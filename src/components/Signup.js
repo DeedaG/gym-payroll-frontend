@@ -19,12 +19,21 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     event.preventDefault()
     signup(signupFormData, history)
   }
+
+  const mystyle = {
+        color: "black",
+        backgroundColor: "silver",
+        padding: "8px",
+        fontFamily: "Arial"
+      };
     // debugger
+
   return (
     <form onSubmit={handleSubmit}>
-      <input placeholder="username" value={signupFormData.username} name="username" type="text" onChange={handleUser} />
-      <input placeholder="password" value={signupFormData.password} name="password" type="text" onChange={handleUser} />
-      <input type="submit" value="Sign Up"/>
+      <input style={mystyle} placeholder="username" value={signupFormData.username} name="username" type="text" onChange={handleUser} />
+      <input style={mystyle} placeholder="password" value={signupFormData.password} name="password" type="text" onChange={handleUser} />
+      <br/>
+      <input style={mystyle} class="button button1" type="submit" value="Sign Up"/>
     </form>
   )
 }

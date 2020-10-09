@@ -24,8 +24,8 @@ const PayrollCard = ({payroll}) => {
         )}<br></br>
     Grand Total:<h1>{calculateTotalRecordHours} hours</h1>
 
-    <Link to ={`/payrolls/${payroll.id}/edit`}
-      key={payroll.attributes.id} style={{color: "silver"}}>Add/Edit
+  <Link to ={`/payrolls/${payroll.id}/edit`}
+      key={payroll.attributes.id} ><button className="button button2">Add/Edit</button>
       </Link>
     </div>
      :

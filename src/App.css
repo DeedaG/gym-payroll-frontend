@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-image: url("https://img-aws.ehowcdn.com/877x500p/cpi.studiod.com/ehowmedia/a05/qq/h7/ursa-major_-big-dipper-800x800.jpg");
+  color: silver;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -21,30 +24,36 @@
   color: #09d3ac;
 }
 
-.NavBar {
-  text-align: left;
-  padding: 50px;
-  background-color: silver;
-  font-size: calc(10px + 2vmin);
-  min-height: 10vh;
+.button {/* Green */
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
+
+.button1 {
+  border-radius: 12px;
+  padding: 20px;}
+.button2 {
+  border-radius: 12px;
+  padding: 5px;
+  color: green;}
+.button3 {
+  border-radius: 12px;
+  padding: 5px;
+  color: red;}
+.button4 {
+  border-radius: 12px;
+  padding: 5px;
+  color: black;}
 
 .Home {
   background-color: darkgray;
   font-size: calc(10px + 2vmin);
   min-height: 10vh;
-  color: black;
-}
-
-.PayrollList {
-  color: silver;
-  text-align: left;
-  padding: 50px;
-  font-size: calc(8px + 2vmin);
-  min-height: 10vh;
-}
-
-.PayrollList-payrollList {
   color: black;
 }
 
@@ -59,8 +68,89 @@
     50%  {color:purple; left:140px; bottom:300px;}
   }
 
-.App {
-  background-color: purple;
-  color: silver;
-  min-height: 100vh;
+.material-icons.money {
+      padding: 20px;
+      position: relative;
+    color: #696969; }
+
+
+.NavBar {
+  text-align: left;
+  padding: 50px;
+  background-color: silver;
+  /* background-image: url("https://cdn.modernghana.com/images/content/facts_about_starstotalfamilylife.jpg"); */
+  font-size: calc(10px + 2vmin);
+  min-height: 10vh;
+  border: 5px solid black;
+  border-style: solid;
 }
+
+.PayrollList {
+  color: silver;
+  text-align: left;
+  padding: 50px;
+  font-size: calc(8px + 2vmin);
+  min-height: 10vh;
+}
+
+
+.calendar {
+  padding: 350px;
+  width: 30%;
+  }
+
+  .popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }

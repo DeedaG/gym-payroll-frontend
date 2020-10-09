@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => (
 
-  <div>
+  <div id="Home">
     <br></br>
     <br></br>
       <h1>Payroll Manager</h1>
@@ -13,7 +13,7 @@ const Home = () => (
                 star star star
               </span>
       <span>
-        <h1><Link to="/signup">Sign Up</Link> or <Link to="/login">Log In</Link></h1>
+        <h1><Link style={{color: "silver"}} to="/signup">Sign Up</Link> or <Link style={{color: "silver"}} to="/login">Log In</Link></h1>
       </span>
   </div>
 )

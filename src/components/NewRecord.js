@@ -17,6 +17,11 @@ class NewRecord extends React.Component {
     }
   }
 
+  myFunction = () => {
+    let popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  }
+
   handleClick = () => {
       this.props.createRecord({
         ...this.props.recordData,
@@ -26,26 +31,32 @@ class NewRecord extends React.Component {
       this.props.updatePayroll(this.state.payrollData, this.props.history)
         }
 
-
    onChange = workdate => this.setState({ workdate },
      function () {
        this.props.updateRecordForm("workdate", this.state.workdate)
      })
 
   render() {
-// debugger
   return (
-
-    <div >
-      <label>2. Choose Day</label>
-      <Calendar
-        name="workdate"
-        onChange={this.onChange}
-        value={this.state.workdate} />
-      <GroupCheckBox />
-      <label>4. Add Work Day to Time Card</label>
-      <button onClick={this.handleClick}>Add</button>
+    <div>
+      <div className="popup" >
+        <button onClick={this.myFunction} className="popup button button2">Choose Day</button>
+        <span className="popuptext" id="myPopup">
+          <Calendar
+            name="workdate"
+            onChange={this.onChange}
+            value={this.state.workdate} />
+        </span>
+      </div>
+      <div className="guide2">
+        <br />
+        <GroupCheckBox />
+        <label>Add Work to Time Card</label>
+        <button className="button button2" onClick={this.handleClick}>Add</button>
+      </div>
     </div>
+
+
      )
     }
   }

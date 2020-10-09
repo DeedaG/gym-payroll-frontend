@@ -65,9 +65,11 @@ export const createRecord = ( recordData, history ) => {
   return dispatch => {
 
     const workedGroups = recordData.groups
+    // console.log("workedGroups", workedGroups)
     const workHours = workedGroups.map(group =>
       parseInt(group.attributes.hours))
-    const add = workHours.reduce(myFunc);
+    const add = workHours.reduce(myFunc, 0);
+    console.log("add", add)
     function myFunc(total, num) {
       return total + num;
     }

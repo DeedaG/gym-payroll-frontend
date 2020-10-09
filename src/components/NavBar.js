@@ -7,15 +7,13 @@ import Logout from './Logout.js'
   const NavBar = ( { currentUser, loggedIn }) => {
     return (
       <div className="NavBar">
-        <NavLink exact activeClassName="active" to="/payrolls/new"><h3>Create New Time Card</h3></NavLink>
-
-        <NavLink exact activeClassName="active" to="/payrolls"><h4>My Payrolls</h4></NavLink>
-
-        { loggedIn ? <Logout /> : null}
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
               rel="stylesheet"/>
-            <span style={{ fontSize: 100 }} className="material-icons darkgray">
-          star star star star star star star star star star star star
+            <NavLink style={{color: "navy"}} exact activeClassName="active" to="/payrolls/new"><h3>Create New Time Card</h3></NavLink>
+            <NavLink style={{color: "navy"}} exact activeClassName="active" to="/payrolls"><h4>My Time Cards</h4></NavLink>
+        { loggedIn ? <Logout /> : null}
+            <span style={{ fontSize: 80, float: "right" }} className="material-icons darkgray">
+           star star star star star star star
           </span>
     </div>
     )

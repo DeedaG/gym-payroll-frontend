@@ -13,23 +13,28 @@ const EditPayrollForm = ({ formData, setFormDataForEdit, updateNewPayrollForm, h
   }
 
   return (
-    <form onSubmit = {event => {
-      event.preventDefault();
-        handleSubmit(formData)
-      }}>
-      <br></br>
-      Edit Pay Period:
-      <input
-        name="payPeriod"
-        onChange={handleChange}
-        value={payPeriod}
-      />
+    <div>
+
+      <label>Edit Pay Period: {payPeriod}</label>
+      <form onSubmit = {event => {
+        event.preventDefault();
+          handleSubmit(formData)
+        }}>
+        <br></br>
+        <input
+          type="hidden"
+          name="payPeriod"
+          onChange={handleChange}
+          value={payPeriod}
+        />
       <NewRecord />
         <input
           type="submit"
           value="Enter"
         /><br/>
-      </form>
+        </form>
+
+      </div>
   )};
 
 const mapStateToProps = state => {

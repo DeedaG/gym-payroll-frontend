@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom'
         history.push('/')
         }
       }>
-        <input type="submit" value="Log Out" />
+        <input className="button button4" type="submit" value="Log Out" />
       </form>
     )
 }
