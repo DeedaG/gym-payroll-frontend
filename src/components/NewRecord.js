@@ -5,8 +5,8 @@ import { createRecord } from '../actions/records.js'
 import { connect } from 'react-redux'
 import Calendar from 'react-calendar';
 import GroupCheckBox from './GroupCheckBox.js'
+import PayrollCard from './PayrollCard.js'
 import { withRouter } from 'react-router-dom';
-
 
 class NewRecord extends React.Component {
   state = {
@@ -27,7 +27,6 @@ class NewRecord extends React.Component {
         ...this.props.recordData,
         ...this.state.payrollData,
       }, this.props.history)
-      // debugger
       this.props.updatePayroll(this.state.payrollData, this.props.history)
         }
 
@@ -37,10 +36,11 @@ class NewRecord extends React.Component {
      })
 
   render() {
+    // debugger
   return (
     <div>
       <div className="popup" >
-        <button onClick={this.myFunction} className="popup button button2">Choose Day</button>
+        <button onClick={this.myFunction} className="popup button button4">Choose Day</button>
         <span className="popuptext" id="myPopup">
           <Calendar
             name="workdate"
@@ -51,8 +51,7 @@ class NewRecord extends React.Component {
       <div className="guide2">
         <br />
         <GroupCheckBox />
-        <label>Add Work to Time Card</label>
-        <button className="button button2" onClick={this.handleClick}>Add</button>
+        <button className="button button2" onClick={this.handleClick}>Add Work to Time Card</button>
       </div>
     </div>
 
