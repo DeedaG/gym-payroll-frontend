@@ -81,7 +81,7 @@ export const createRecord = ( recordData, history ) => {
         payroll_id: recordData.id
     }
     // debugger
-    console.log("sendableRecordData.totalHours", sendableRecordData)
+    console.log("sendableRecordData", sendableRecordData)
     return fetch(`http://localhost:3000/api/v1/records`, {
       credentials: 'include',
       method: 'POST',
