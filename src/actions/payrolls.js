@@ -81,6 +81,7 @@ export const createPayroll = ( payrollData, history ) => {
     })
     .then(r => r.json())
     .then(resp => {
+      console.log("payrollupdateresp", resp)
       if (resp.error) {
         alert(resp.error)
       }else {
