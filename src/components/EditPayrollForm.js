@@ -1,21 +1,25 @@
 import React from 'react'
-import { updateNewPayrollForm } from '../actions/payrollForm.js'
+import { updatePayrollForm } from '../actions/payrollForm.js'
 import { setFormDataForEdit } from '../actions/payrollForm.js'
 import NewRecord from './NewRecord.js'
 import { connect } from 'react-redux'
 
-const EditPayrollForm = ({ formData, setFormDataForEdit, updateNewPayrollForm, handleSubmit, userId }) => {
+const EditPayrollForm = ({ formData, setFormDataForEdit, updatePayrollForm, handleSubmit, userId }) => {
   const { payPeriod } = formData
 
   const handleChange = event => {
     const { name, value } = event.target
-    updateNewPayrollForm(name,value)
+    updatePayrollForm(name,value)
   }
 
   return (
     <div>
-
-      <label>Edit Pay Period: {payPeriod}</label>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"/>
+          <span className="material-icons edit">
+        edit
+      </span>
+      <h3 className="underline">...Editing Pay Period: {payPeriod}</h3>
       <form onSubmit = {event => {
         event.preventDefault();
           handleSubmit(formData)
@@ -29,11 +33,11 @@ const EditPayrollForm = ({ formData, setFormDataForEdit, updateNewPayrollForm, h
         />
       <NewRecord />
         <input
+
           type="submit"
           value="Enter"
         /><br/>
         </form>
-
       </div>
   )};
 
@@ -47,4 +51,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {updateNewPayrollForm, setFormDataForEdit })(EditPayrollForm);
+export default connect(mapStateToProps, {updatePayrollForm, setFormDataForEdit })(EditPayrollForm);
