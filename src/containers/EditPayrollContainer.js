@@ -2,7 +2,6 @@ import React from 'react'
 import { updatePayroll, deletePayroll } from '../actions/payrolls.js'
 import { setFormDataForEdit, resetPayrollForm } from '../actions/payrollForm.js'
 import { connect } from 'react-redux'
-import PayrollCard from '../components/PayrollCard.js'
 import EditPayrollForm from '../components/EditPayrollForm.js'
 
 class EditPayrollContainer extends React.Component {

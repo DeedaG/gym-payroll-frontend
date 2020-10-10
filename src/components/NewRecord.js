@@ -5,7 +5,6 @@ import { createRecord } from '../actions/records.js'
 import { connect } from 'react-redux'
 import Calendar from 'react-calendar';
 import GroupCheckBox from './GroupCheckBox.js'
-import PayrollCard from './PayrollCard.js'
 import { withRouter } from 'react-router-dom';
 
 class NewRecord extends React.Component {
@@ -13,7 +12,8 @@ class NewRecord extends React.Component {
     workdate: new Date(),
     payrollData: {
       id: this.props.match.params.id,
-      records: this.props.recordData
+      records: this.props.recordData,
+      total: this.props.recordData.totalHours
     }
   }
 
@@ -36,7 +36,6 @@ class NewRecord extends React.Component {
      })
 
   render() {
-    // debugger
   return (
     <div>
       <div className="popup" >

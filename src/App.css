@@ -82,11 +82,11 @@
 
 .NavBar {
   text-align: left;
-  padding: 50px;
+  padding: 40px;
   background-color: silver;
   /* background-image: url("https://cdn.modernghana.com/images/content/facts_about_starstotalfamilylife.jpg"); */
   font-size: calc(10px + 2vmin);
-  min-height: 10vh;
+  min-height: 5vh;
   border: 5px solid black;
   border-style: solid;
 }

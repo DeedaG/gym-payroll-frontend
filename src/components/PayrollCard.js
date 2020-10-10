@@ -1,5 +1,4 @@
 import React from 'react'
-import EditPayrollForm from './EditPayrollForm.js'
 import { Link } from 'react-router-dom'
 
 const PayrollCard = ({payroll}) => {
