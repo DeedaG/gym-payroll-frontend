@@ -31,7 +31,7 @@ const Login = ({ loginFormData, updateLoginForm, login, history }) => {
         <input style={mystyle} placeholder="username" value={loginFormData.username} type="text" name="username" onChange={handleChange} />
         <input style={mystyle} placeholder="password" value={loginFormData.password} type="text" name="password" onChange={handleChange}/>
         <br/>
-        <input style={mystyle} class="button button1" type="submit" value="Log In" />
+        <input style={mystyle} className="button button1" type="submit" value="Log In" />
       </form>
   )
 }

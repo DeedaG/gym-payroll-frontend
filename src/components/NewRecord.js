@@ -30,12 +30,14 @@ class NewRecord extends React.Component {
       this.props.updatePayroll(this.state.payrollData, this.props.history)
         }
 
+
    onChange = workdate => this.setState({ workdate },
      function () {
        this.props.updateRecordForm("workdate", this.state.workdate)
      })
 
   render() {
+    // debugger
   return (
     <div>
       <div className="popup" >
