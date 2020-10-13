@@ -65,8 +65,9 @@ export const getMyPayrolls = () => {
 export const createPayroll = ( payrollData, history ) => {
   return dispatch => {
     const sendablePayrollData = {
+        id: payrollData.id,
         payPeriod: payrollData.payPeriod,
-        total: payrollData.total,
+        total: 0,
         records: payrollData.records,
         user_id: payrollData.userId
     }
@@ -93,10 +94,20 @@ export const createPayroll = ( payrollData, history ) => {
   }
 }
 
-export const updatePayroll = ( payrollData, history ) => {
+export const updatePayroll = ( payrollData, history, payRate ) => {
   return dispatch => {
+    // function myFunc(total, num) {
+    //   return total + num;
+    // }
+    // const records = payrollData.records
+    // const hours = records.length > 0 ?
+    //   records.map(r => parseFloat(r.totalHours)) : 0
+    // const totalHours = hours ?
+    //   hours.reduce(myFunc, 0) : 0
+    console.log("payRate", payRate)
     const sendablePayrollData = {
         id: payrollData.id,
+        payPeriod: payrollData.payPeriod,
         total: payrollData.total,
         records: payrollData.records
     }
@@ -108,15 +119,17 @@ export const updatePayroll = ( payrollData, history ) => {
       },
       body: JSON.stringify(sendablePayrollData)
     })
-    // console.log("sendablePayrollData", sendablePayrollData)
+
     .then(r => r.json())
     .then(resp => {
+      console.log("resp", resp)
       if (resp.error) {
         alert(resp.error)
       }else
       {
-      dispatch(updatePayrollSuccess(resp.data))
-      history.push(`/payrolls/${resp.data.id}`)
+
+      history.push(`/payrolls/${resp.id}/edit`)
+      dispatch(updatePayrollSuccess(resp))
      }
     })
   }

@@ -7,23 +7,25 @@ import EditPayrollForm from '../components/EditPayrollForm.js'
 class EditPayrollContainer extends React.Component {
 
   componentDidMount() {
-    this.props.payroll && this.props.setFormDataForEdit(this.props.payroll)
+    this.props.payroll && this.props.setFormDataForEdit(this.props.payroll, this.props.payRate)
   }
 
   componentDidUpdate(prevProps) {
     this.props.payroll && !prevProps.payroll &&
-    this.props.setFormDataForEdit(this.props.payroll)
+    this.props.setFormDataForEdit(this.props.payroll, this.props.payRate)
+    // this.getCurrentUser(this.props.relationships.user.id)
   }
 
   componentWillUnmount() {
     this.props.resetPayrollForm()
   }
 
-  handleSubmit = (formData) => {
-    const { updatePayroll, history } = this.props
+  handleSubmit = (formData ) => {
+
+    const { updatePayroll, history, payRate } = this.props
     updatePayroll({
       payrollId: this.props.match.params.id,
-      ...formData
+      ...formData, payRate
     }, history)
   }
   render() {

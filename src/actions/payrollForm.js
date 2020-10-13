@@ -1,6 +1,5 @@
 export const  updateNewPayrollForm = (name, value) => {
   const formData = {name,value}
-
   return {
     type: "UPDATE_NEW_PAYROLL_FORM",
     formData
@@ -9,7 +8,6 @@ export const  updateNewPayrollForm = (name, value) => {
 
 export const  updatePayrollForm = (name, value) => {
   const formData = {name,value}
-
   return {
     type: "UPDATE_PAYROLL_FORM",
     formData
@@ -28,23 +26,20 @@ export const  resetPayrollForm = () => {
   }
 }
 
-export const setFormDataForEdit = (payroll) => {
-  const myFunc = (total, num) => {
+export const setFormDataForEdit = (payroll, payRate) => {
+  function myFunc(total, num) {
     return total + num;
   }
-
-  const calcTotal =
-  payroll.attributes.records.map(
-    record =>
-    parseInt(record.totalHours)).reduce(myFunc, 0)
-
   const payrollFormData = {
     id: payroll.id,
     payPeriod: payroll.attributes.payPeriod,
-    total: calcTotal,
+    total: payroll.attributes.records ?
+    (payroll.attributes.records.map(r => parseFloat(r.totalHours)).reduce(myFunc, 0)) * payRate
+    : 0,
     records: payroll.attributes.records
   }
   console.log("payrollFormData:", payrollFormData)
+  console.log("payRate:", payRate)
   return {
     type: "SET_FORM_DATA_FOR_EDIT",
     payrollFormData

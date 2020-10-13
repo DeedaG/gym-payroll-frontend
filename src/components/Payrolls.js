@@ -23,7 +23,6 @@ const Payrolls = ({payrolls}) => {
 // debugger
     return {
       payrolls: state.payrolls
-
     }
   }
 

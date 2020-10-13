@@ -2,18 +2,19 @@ import React from 'react'
 import { updateRecordForm } from '../actions/recordForm.js'
 import { updatePayroll } from '../actions/payrolls.js'
 import { createRecord } from '../actions/records.js'
+import { getCurrentUser } from '../actions/currentUser.js'
 import { connect } from 'react-redux'
 import Calendar from 'react-calendar';
 import GroupCheckBox from './GroupCheckBox.js'
 import { withRouter } from 'react-router-dom';
 
 class NewRecord extends React.Component {
+
   state = {
     workdate: new Date(),
     payrollData: {
       id: this.props.match.params.id,
-      records: this.props.recordData,
-      total: this.props.recordData.totalHours
+      records: this.props.recordData
     }
   }
 
@@ -27,17 +28,18 @@ class NewRecord extends React.Component {
         ...this.props.recordData,
         ...this.state.payrollData,
       }, this.props.history)
-      this.props.updatePayroll(this.state.payrollData, this.props.history)
+      this.props.updatePayroll(this.state.payrollData, this.props.history, this.props.payRate)
         }
 
 
    onChange = workdate => this.setState({ workdate },
      function () {
        this.props.updateRecordForm("workdate", this.state.workdate)
-     })
+     },
+   this.props.getCurrentUser())
 
   render() {
-    // debugger
+    debugger
   return (
     <div>
       <div className="popup" >
@@ -62,11 +64,11 @@ class NewRecord extends React.Component {
   }
 
   const mapStateToProps = state => {
-
     return {
       groups: state.groups,
-      recordData: state.recordForm
+      recordData: state.recordForm,
+      payRate: state.currentUser ? state.currentUser.attributes.payRate : 12
     }
   }
 
-  export default withRouter(connect(mapStateToProps,{updateRecordForm, updatePayroll, createRecord})(NewRecord))
+  export default withRouter(connect(mapStateToProps,{getCurrentUser, updateRecordForm, updatePayroll, createRecord})(NewRecord))

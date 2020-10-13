@@ -49,7 +49,18 @@
 .button4 {
   /* border-radius: 12px; */
   padding: 5px;
-  color: black;}
+  color: black;
+}
+
+.calendar {
+  padding: 350px;
+  width: 30%;
+}
+
+.doubleUnderline {
+  text-decoration-line: underline;
+  text-decoration-style: double;
+}
 
 .Home {
   background-color: darkgray;
@@ -84,7 +95,6 @@
   text-align: left;
   padding: 40px;
   background-color: silver;
-  /* background-image: url("https://cdn.modernghana.com/images/content/facts_about_starstotalfamilylife.jpg"); */
   font-size: calc(10px + 2vmin);
   min-height: 5vh;
   border: 5px solid black;
@@ -98,22 +108,6 @@
   font-size: calc(8px + 2vmin);
   min-height: 10vh;
 }
-
-.underline {
-  font-size: calc(10px + 2vmin);
-  /* background-color: white; */
-  color: white;
-  width: 400px;
-  /* text-decoration: underline; */
-  padding: 10px;
-  text-align: left;
-  margin-left: 50px;
-}
-
-.calendar {
-  padding: 350px;
-  width: 30%;
-  }
 
   .popup {
     position: relative;
@@ -143,23 +137,40 @@
 
   /* Popup arrow */
   .popup .popuptext::after {
-    
+    /* content: ""; */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
   }
+
 
   /* Toggle this class - hide and show the popup */
   .popup .show {
     visibility: visible;
     -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
+  animation: fadeIn 1s;
   }
 
   /* Add animation (fade in the popup) */
-  @-webkit-keyframes fadeIn {
+  /* @-webkit-keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
-  }
+  } */
 
-  @keyframes fadeIn {
+  /* @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
+  } */
+
+  .underline {
+    font-size: calc(10px + 2vmin);
+    color: white;
+    width: 400px;
+    padding: 10px;
+    text-align: left;
+    margin-left: 50px;
   }

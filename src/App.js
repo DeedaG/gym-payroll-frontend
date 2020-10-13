@@ -3,12 +3,10 @@ import NavBar from './components/NavBar.js';
 import { connect } from 'react-redux';
 import { getCurrentUser} from './actions/currentUser.js';
 import Signup from './components/Signup.js'
-// import Logout from './components/Logout.js';
 import Login from './components/Login.js';
 import Home from './components/Home.js';
 import './App.css';
 import NewRecord from './components/NewRecord.js'
-// import NewPayrollForm from './components/NewPayrollForm.js'
 import EditPayrollContainer from './containers/EditPayrollContainer.js'
 import NewPayrollContainer from './containers/NewPayrollContainer.js'
 import RecordCard from './components/RecordCard.js'
@@ -26,7 +24,7 @@ class App extends React.Component {
 
 
   render() {
-    const { loggedIn, payrolls, records } = this.props
+    const { loggedIn, payrolls, records, payRate } = this.props
   return (
     <div className="App">
 
@@ -50,7 +48,7 @@ class App extends React.Component {
         <Route exact path='/payrolls/:id/edit' render={props => {
         const payroll = payrolls.find(payroll => payroll.id ===
           props.match.params.id)
-        return <EditPayrollContainer payroll={payroll} {...props}/>
+        return <EditPayrollContainer payRate={payRate} payroll={payroll} {...props}/>
         }}/>
       <Route exact path='/payrolls/:id/delete' render={props => {
         const payroll = payrolls.find(payroll => payroll.id ===
@@ -67,6 +65,7 @@ class App extends React.Component {
 const mapStateToProps = state => {
 return ({
   loggedIn: !!state.currentUser,
+    payRate: state.currentUser ? state.currentUser.attributes.payRate : 12,
     payrolls: state.payrolls,
     records: state.records,
     groups: state.groups

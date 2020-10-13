@@ -3,7 +3,7 @@ import { updateNewPayrollForm } from '../actions/payrollForm.js'
 import { connect } from 'react-redux'
 
 
-const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId }) => {
+const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId}) => {
   const { payPeriod } = formData
 
   const handleChange = event => {
@@ -24,6 +24,7 @@ const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId }
         onChange={handleChange}
         value={payPeriod}
       />
+      />
         <input
           type="submit"
           value="Enter"
@@ -32,7 +33,6 @@ const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId }
   )};
 
 const mapStateToProps = state => {
-  // debugger
   const userId = state.currentUser ? state.currentUser.id : ""
     return {
       formData: state.payrollForm,

@@ -32,7 +32,9 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
     <form onSubmit={handleSubmit}>
       <input style={mystyle} placeholder="username" value={signupFormData.username} name="username" type="text" onChange={handleUser} />
       <input style={mystyle} placeholder="password" value={signupFormData.password} name="password" type="text" onChange={handleUser} />
-      <br/>
+      <input style={mystyle} placeholder="payRate" value={signupFormData.payRate} name="payRate" type="text" onChange={handleUser} />
+
+    <br/>
       <input style={mystyle} class="button button1" type="submit" value="Sign Up"/>
     </form>
   )

@@ -1,10 +1,9 @@
 import React from 'react'
 import { updatePayrollForm } from '../actions/payrollForm.js'
-import { setFormDataForEdit } from '../actions/payrollForm.js'
 import NewRecord from './NewRecord.js'
 import { connect } from 'react-redux'
 
-const EditPayrollForm = ({ formData, setFormDataForEdit, updatePayrollForm, handleSubmit, userId }) => {
+const EditPayrollForm = ({ formData, updatePayrollForm, handleSubmit, userId }) => {
   const { payPeriod } = formData
 
   const handleChange = event => {
@@ -31,9 +30,8 @@ const EditPayrollForm = ({ formData, setFormDataForEdit, updatePayrollForm, hand
           onChange={handleChange}
           value={payPeriod}
         />
-      <NewRecord />
+      <NewRecord/>
         <input
-
           type="submit"
           value="Enter"
         /><br/>
@@ -42,7 +40,6 @@ const EditPayrollForm = ({ formData, setFormDataForEdit, updatePayrollForm, hand
   )};
 
 const mapStateToProps = state => {
-  // debugger
   const userId = state.currentUser ? state.currentUser.id : ""
     return {
       formData: state.payrollForm,
@@ -51,4 +48,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {updatePayrollForm, setFormDataForEdit })(EditPayrollForm);
+export default connect(mapStateToProps, {updatePayrollForm })(EditPayrollForm);

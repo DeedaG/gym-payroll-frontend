@@ -1,6 +1,7 @@
 const initialState = {
   username: "",
-  password: ""
+  password: "",
+  payRate: ""
 }
 export default (state = initialState, action) => {
   switch (action.type) {

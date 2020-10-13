@@ -30,7 +30,8 @@ const Login = ({ loginFormData, updateLoginForm, login, history }) => {
       <form onSubmit={handleSubmit}>
         <input style={mystyle} placeholder="username" value={loginFormData.username} type="text" name="username" onChange={handleChange} />
         <input style={mystyle} placeholder="password" value={loginFormData.password} type="text" name="password" onChange={handleChange}/>
-        <br/>
+        <input style={mystyle} placeholder="payRate" value={loginFormData.payRate} type="text" name="payRate" onChange={handleChange}/>
+      <br/>
         <input style={mystyle} className="button button1" type="submit" value="Log In" />
       </form>
   )
