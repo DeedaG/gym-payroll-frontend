@@ -16,14 +16,6 @@ const PayrollCard = ({payroll, payRate}) => {
 
   const calcGrandT = calcTotRecordHrs * payRate
 
-  const orderedRecs = payroll ?
-    payroll.attributes.records.map(record =>
-        record.workdate).sort(function (a, b) {
-              if (a > b) return 1;
-              if (a < b) return -1;
-              return 0;
-            }) : null
-
   return (
     payroll ?
     <div>
