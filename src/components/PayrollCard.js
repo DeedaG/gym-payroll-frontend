@@ -21,16 +21,16 @@ const PayrollCard = ({payroll, payRate}) => {
     <div>
       Pay Period:<h1>{payroll.attributes.payPeriod}</h1>
     Daily Totals: {payroll.attributes.records.map(record =>
-        <li key={record.workdate}>{record.workdate} {record.totalHours} hours</li>
+        <li key={record.id}>{record.workdate} {record.totalHours} hours</li>
         )
         .sort(function (a, b) {
-              if (a.key > b.key) return 1;
-              if (a.key < b.key) return -1;
-debugger
+              if (a.props.children[0] > b.props.children[0]) return 1;
+              if (a.props.children[0] < b.props.children[0]) return -1;
+          
               return 0;
             })
       }<br></br>
-      Grand Totals:<h2>{calcTotRecordHrs} hours</h2>
+    Grand Totals:<h2>{calcTotRecordHrs} hours</h2>
     <h1 className="doubleUnderline">$ {calcGrandT}</h1>
 
   <Link to ={`/payrolls/${payroll.id}/edit`}
