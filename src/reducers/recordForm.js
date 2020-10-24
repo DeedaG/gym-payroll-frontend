@@ -1,7 +1,8 @@
 const initialState = {
     workdate: "",
     totalHours: "",
-    groups: ""
+    groups: "",
+    payroll_id: ""
 }
 
 export default (state=initialState, action) => {

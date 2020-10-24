@@ -13,7 +13,6 @@ class EditPayrollContainer extends React.Component {
   componentDidUpdate(prevProps) {
     this.props.payroll && !prevProps.payroll &&
     this.props.setFormDataForEdit(this.props.payroll, this.props.payRate)
-    // this.getCurrentUser(this.props.relationships.user.id)
   }
 
   componentWillUnmount() {
@@ -21,7 +20,6 @@ class EditPayrollContainer extends React.Component {
   }
 
   handleSubmit = (formData ) => {
-
     const { updatePayroll, history, payRate } = this.props
     updatePayroll({
       payrollId: this.props.match.params.id,
@@ -32,10 +30,11 @@ class EditPayrollContainer extends React.Component {
     const { history, payroll, deletePayroll } = this.props
     const payrollId = payroll ? payroll.id : null
     return <>
-        <EditPayrollForm handleSubmit={this.handleSubmit}/>
+        <EditPayrollForm payroll={payroll}/>
         <br/>
-        <button className="button button3" onClick={()=>deletePayroll(payrollId, history)}>Delete Payroll</button>
-    </>
+        <button className="button button3" onClick={()=>deletePayroll(payroll, payrollId, history)}>Delete Payroll</button>
+
+  </>
 
   }
 };

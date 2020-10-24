@@ -1,5 +1,5 @@
 import { resetNewPayrollForm } from './payrollForm.js'
-
+import  {deleteRecord } from './records.js'
 
 export const setMyPayrolls = payrolls => {
   return {
@@ -96,20 +96,16 @@ export const createPayroll = ( payrollData, history ) => {
 
 export const updatePayroll = ( payrollData, history, payRate ) => {
   return dispatch => {
-    // function myFunc(total, num) {
-    //   return total + num;
-    // }
-    // const records = payrollData.records
-    // const hours = records.length > 0 ?
-    //   records.map(r => parseFloat(r.totalHours)) : 0
-    // const totalHours = hours ?
-    //   hours.reduce(myFunc, 0) : 0
+    const records = payrollData.records
+    const payrollRecords = records !== null ?
+      records.map(r => r.payroll_id = payrollData.id) : null
+
     console.log("payRate", payRate)
     const sendablePayrollData = {
         id: payrollData.id,
         payPeriod: payrollData.payPeriod,
         total: payrollData.total,
-        records: payrollData.records
+        records: payrollRecords,
     }
     return fetch(`http://localhost:3000/api/v1/payrolls/${payrollData.id}`, {
       credentials: 'include',
@@ -135,7 +131,7 @@ export const updatePayroll = ( payrollData, history, payRate ) => {
   }
 }
 
-export const deletePayroll = (payrollId, history) => {
+export const deletePayroll = (payroll, payrollId, history) => {
   return dispatch => {
     return fetch(`http://localhost:3000/api/v1/payrolls/${payrollId}`, {
       credentials: "include",
@@ -150,6 +146,7 @@ export const deletePayroll = (payrollId, history) => {
           alert(resp.error)
         } else {
           dispatch(deletePayrollSuccess(payrollId))
+          payroll.records.map(r => dispatch(deleteRecord(r.id, history)))
           history.push(`/payrolls`)
         }
       })

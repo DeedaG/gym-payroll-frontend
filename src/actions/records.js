@@ -105,10 +105,10 @@ export const updateRecord = ( recordData, history ) => {
   return dispatch => {
     console.log(recordData)
     const sendableRecordData = {
-        id: recordData.id,
         workdate: recordData.workdate,
         totalHours: recordData.totalHours,
-        groups: recordData.groups
+        groups: recordData.groups,
+        payroll_id: recordData.id
     }
     return fetch(`http://localhost:3000/api/v1/records/${recordData.recordId}`, {
       credentials: 'include',

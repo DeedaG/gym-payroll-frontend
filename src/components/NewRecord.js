@@ -1,6 +1,7 @@
 import React from 'react'
 import { updateRecordForm } from '../actions/recordForm.js'
 import { updatePayroll } from '../actions/payrolls.js'
+import { updatePayrollForm } from '../actions/payrollForm.js'
 import { createRecord } from '../actions/records.js'
 import { getCurrentUser } from '../actions/currentUser.js'
 import { connect } from 'react-redux'
@@ -9,12 +10,23 @@ import GroupCheckBox from './GroupCheckBox.js'
 import { withRouter } from 'react-router-dom';
 
 class NewRecord extends React.Component {
+  myFunc = (total, num) => {
+    return total + num;
+  }
+
+  records = this.props.payroll ? this.props.payroll.attributes.records : []
+  hours = this.records !== 0 ?
+    this.records.map(r => parseFloat(r.totalHours)) : 0
+  totalHours = this.hours ?
+    this.hours.reduce(this.myFunc, 0) : 0
 
   state = {
     workdate: new Date(),
+    payroll_id: this.props.match.params.id,
     payrollData: {
       id: this.props.match.params.id,
-      records: this.props.recordData
+      records: this.props.payroll ? this.props.payroll.attributes.records : [],
+      total: this.totalHours * this.props.payRate
     }
   }
 
@@ -26,7 +38,7 @@ class NewRecord extends React.Component {
   handleClick = () => {
       this.props.createRecord({
         ...this.props.recordData,
-        ...this.state.payrollData,
+        ...this.state.payrollData
       }, this.props.history)
       this.props.updatePayroll(this.state.payrollData, this.props.history, this.props.payRate)
         }
@@ -39,7 +51,6 @@ class NewRecord extends React.Component {
    this.props.getCurrentUser())
 
   render() {
-    debugger
   return (
     <div>
       <div className="popup" >
@@ -57,13 +68,11 @@ class NewRecord extends React.Component {
         <button className="button button2" onClick={this.handleClick}>Add Work to Time Card</button>
       </div>
     </div>
-
-
      )
     }
   }
 
-  const mapStateToProps = state => {
+  const mapStateToProps = (state) => {
     return {
       groups: state.groups,
       recordData: state.recordForm,
@@ -71,4 +80,4 @@ class NewRecord extends React.Component {
     }
   }
 
-  export default withRouter(connect(mapStateToProps,{getCurrentUser, updateRecordForm, updatePayroll, createRecord})(NewRecord))
+  export default withRouter(connect(mapStateToProps,{getCurrentUser, updateRecordForm, updatePayroll, updatePayrollForm, createRecord})(NewRecord))
