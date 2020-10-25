@@ -24,7 +24,6 @@ const NewPayrollForm = ({ formData, updateNewPayrollForm, handleSubmit, userId})
         onChange={handleChange}
         value={payPeriod}
       />
-      />
         <input
           type="submit"
           value="Enter"
