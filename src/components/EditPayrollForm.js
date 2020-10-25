@@ -14,8 +14,7 @@ const EditPayrollForm = ({ formData, updatePayrollForm, payroll, userId }) => {
       </span>
       <h3 className="underline">...Editing Pay Period: {formData.payPeriod}</h3>
       <h3>current total : ${formData.total}</h3>
-      <NewRecord formData={formData} payroll={payroll}/>
-
+      <NewRecord payroll={payroll}/>
       </>
   )};
 

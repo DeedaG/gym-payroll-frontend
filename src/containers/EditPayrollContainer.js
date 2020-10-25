@@ -33,7 +33,6 @@ class EditPayrollContainer extends React.Component {
         <EditPayrollForm payroll={payroll}/>
         <br/>
         <button className="button button3" onClick={()=>deletePayroll(payroll, payrollId, history)}>Delete Payroll</button>
-
   </>
 
   }

@@ -41,11 +41,15 @@
 .button2 {
   /* border-radius: 12px; */
   padding: 5px;
-  color: green;}
+  color: green;
+}
+
 .button3 {
   /* border-radius: 12px; */
   padding: 5px;
-  color: red;}
+  color: red;
+}
+
 .button4 {
   /* border-radius: 12px; */
   padding: 5px;
@@ -90,6 +94,30 @@
   color: #696969;
   font-size: 30px;
   float: left;}
+
+  .moveLeft {
+    float: left;
+    margin-left: 250px;
+    margin-top: -25px;
+  }
+
+  .moveRight {
+    text-align: center;
+    margin-top: 125px;
+  }
+
+  .column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 
 .NavBar {
   text-align: left;
@@ -155,16 +183,6 @@
   animation: fadeIn 1s;
   }
 
-  /* Add animation (fade in the popup) */
-  /* @-webkit-keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  } */
-
-  /* @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
-  } */
 
   .underline {
     font-size: calc(10px + 2vmin);

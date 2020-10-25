@@ -41,6 +41,7 @@ class NewRecord extends React.Component {
         ...this.state.payrollData
       }, this.props.history)
       this.props.updatePayroll(this.state.payrollData, this.props.history, this.props.payRate)
+        window.location.assign(`/payrolls/${this.state.payrollData.id}`);
         }
 
 
@@ -52,7 +53,7 @@ class NewRecord extends React.Component {
 
   render() {
   return (
-    <div>
+    <div >
       <div className="popup" >
         <button onClick={this.myFunction} className="popup button button4">Choose Day</button>
         <span className="popuptext" id="myPopup">
