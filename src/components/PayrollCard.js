@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const PayrollCard = ({payroll, payRate}) => {
+const PayrollCard = ({payroll, payRate, payrolls}) => {
 
   const myFunc = (total, num) => {
     return total + num;
@@ -16,13 +16,22 @@ const PayrollCard = ({payroll, payRate}) => {
 
   const calcGrandT = calcTotRecordHrs * payRate
 
+  const currPayPd = payroll ?
+      payroll.attributes.payPeriod
+      : null
+
+  const ttd = payrolls ? payrolls.filter(x => (x.attributes.payPeriod < currPayPd))
+    .map(p => parseFloat(p.attributes.total)).reduce(myFunc, 0) + calcGrandT
+    : null
+
   return (
     payroll ?
     <div className="row">
       <div className="moveLeft">
         Pay Period:<h1>{payroll.attributes.payPeriod}</h1>
-        Grand Totals:<h2>{calcTotRecordHrs} hours</h2>
+      Payroll Totals:<h2>{calcTotRecordHrs} hours</h2>
         <h1 className="doubleUnderline">$ {calcGrandT}</h1>
+        Cumulative Total: <h2 className="doubleUnderline">${ttd}</h2>
         <Link to ={`/payrolls/${payroll.id}/edit`}
           key={payroll.attributes.id} ><button className="button button2">Add/Edit</button>
         </Link>
