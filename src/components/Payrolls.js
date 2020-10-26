@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Payrolls = ({payrolls}) => {
-// debugger
+
   const payrollCards =  payrolls.length > 0 ? payrolls.map(payroll =>
 
     	<ul id="payrollList" key = {payroll.id}>
@@ -20,7 +20,6 @@ const Payrolls = ({payrolls}) => {
 }
 
   const mapStateToProps = state => {
-// debugger
     return {
       payrolls: state.payrolls
     }

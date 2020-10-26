@@ -67,7 +67,7 @@ export const createPayroll = ( payrollData, history ) => {
     const sendablePayrollData = {
         id: payrollData.id,
         payPeriod: payrollData.payPeriod,
-        total: 0,
+        total: payrollData.total ? payrollData.total.toFixed(2) : 0.00,
         records: payrollData.records,
         user_id: payrollData.userId
     }
@@ -96,16 +96,16 @@ export const createPayroll = ( payrollData, history ) => {
 
 export const updatePayroll = ( payrollData, history, payRate ) => {
   return dispatch => {
+
     const records = payrollData.records
     const payrollRecords = records !== null ?
       records.map(r => r.payroll_id = payrollData.id) : null
 
-    console.log("payRate", payRate)
     const sendablePayrollData = {
         id: payrollData.id,
         payPeriod: payrollData.payPeriod,
-        total: payrollData.total,
-        records: payrollRecords,
+        total: payrollData.total.toFixed(2),
+        records: payrollRecords
     }
     return fetch(`http://localhost:3000/api/v1/payrolls/${payrollData.id}`, {
       credentials: 'include',
@@ -115,7 +115,6 @@ export const updatePayroll = ( payrollData, history, payRate ) => {
       },
       body: JSON.stringify(sendablePayrollData)
     })
-
     .then(r => r.json())
     .then(resp => {
       console.log("resp", resp)
@@ -123,7 +122,6 @@ export const updatePayroll = ( payrollData, history, payRate ) => {
         alert(resp.error)
       }else
       {
-
       history.push(`/payrolls/${resp.id}/edit`)
       dispatch(updatePayrollSuccess(resp))
      }
