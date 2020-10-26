@@ -1,5 +1,6 @@
 export const  updateNewPayrollForm = (name, value) => {
   const formData = {name,value}
+  debugger
   return {
     type: "UPDATE_NEW_PAYROLL_FORM",
     formData

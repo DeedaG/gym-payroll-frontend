@@ -35,7 +35,7 @@ class NewRecord extends React.Component {
   return (
 
     <div className="guide2">
-      <label>3. Choose Classes</label>
+      <label>Choose Classes</label>
       {this.props.groups.map((group, index) =>
      <li key = {group.id}>{group.attributes.name}
      <><input
