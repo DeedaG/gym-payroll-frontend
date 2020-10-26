@@ -42,7 +42,7 @@ class App extends React.Component {
         <Route exact path='/payrolls/new' component={NewPayrollContainer}/>
         <Route exact path='/payrolls/:id' render={props => {
           const payroll = payrolls.find(payroll => payroll.id === props.match.params.id)
-            return <PayrollCard payroll={payroll} payRate={payRate} {...props}/>
+            return <PayrollCard payrolls={payrolls} payroll={payroll} payRate={payRate} {...props}/>
             }
           }></Route>
         <Route exact path='/payrolls/:id/edit' render={props => {
