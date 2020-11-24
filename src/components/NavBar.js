@@ -9,6 +9,7 @@ import Logout from './Logout.js'
       <div className="NavBar">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
               rel="stylesheet"/>
+
             <div className="underline">
               <NavLink style={{color: "navy"}} exact activeClassName="active" to="/payrolls/new"><h3>Create New Time Card</h3></NavLink>
               <NavLink style={{color: "navy"}} exact activeClassName="active" to="/payrolls"><h4>My Time Cards</h4></NavLink>
@@ -17,7 +18,6 @@ import Logout from './Logout.js'
              star star star star star star star star star star star star star
             </span>
             </div>
-
      </div>
     )
 }

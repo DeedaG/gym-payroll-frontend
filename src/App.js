@@ -3,14 +3,24 @@ import NavBar from './components/NavBar.js';
 import { connect } from 'react-redux';
 import { getCurrentUser} from './actions/currentUser.js';
 import Signup from './components/Signup.js'
+
+// import Logout from './components/Logout.js';
+
+
 import Login from './components/Login.js';
 import Home from './components/Home.js';
 import './App.css';
 import NewRecord from './components/NewRecord.js'
 import EditPayrollContainer from './containers/EditPayrollContainer.js'
 import NewPayrollContainer from './containers/NewPayrollContainer.js'
+
+import EditPayrollContainer from './containers/EditPayrollContainer.js'
+import PayrollCard from './components/PayrollCard.js'
+import Records from './components/Records.js'
+
 import RecordCard from './components/RecordCard.js'
 import PayrollCard from './components/PayrollCard.js'
+
 import Groups from './components/Groups.js'
 import Payrolls from './components/Payrolls.js'
 
@@ -24,7 +34,11 @@ class App extends React.Component {
 
 
   render() {
+
+    const { loggedIn, payrolls, records } = this.props
+
     const { loggedIn, payrolls, records, payRate } = this.props
+
   return (
     <div className="App">
 
@@ -32,6 +46,23 @@ class App extends React.Component {
       <Switch>
         <Route exact path='/login' component={Login}></Route>
         <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
+
+        <Route exact path='/payrolls/new' component={NewPayrollContainer}/>
+        <Route exact path='/payrolls' component={Payrolls}/>
+        <Route exact path='/records/new' component={Records}/>
+        <Route exact path='/groups' component={Groups}/>
+          <Route exact path='/payrolls/:id' render={props => {
+                const payroll = payrolls.find(payroll => payroll.id === props.match.params.id)
+                  return <PayrollCard payroll={payroll} {...props}/>
+                  }
+                }></Route>
+          <Route exact path='/payrolls/:id/edit' render={props => {
+          const payroll = payrolls.find(payroll => payroll.id ===
+            props.match.params.id)
+          return <EditPayrollContainer payroll={payroll} {...props}/>
+          }
+        }></Route>
+
         <Route exact path='/groups' component={Groups}/>
         <Route exact path='/payrolls' component={Payrolls}/>
         <Route exact path='/records/new' component={NewRecord}/>
@@ -56,6 +87,7 @@ class App extends React.Component {
         return <EditPayrollContainer payroll={payroll} {...props}/>
         }}/>
 
+
       </Switch>
     </div>
   );
@@ -63,12 +95,18 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
+  // debugger
 return ({
   loggedIn: !!state.currentUser,
     payRate: state.currentUser ? state.currentUser.attributes.payRate : 12,
     payrolls: state.payrolls,
+
+    groups: state.groups,
+    records: state.records
+
     records: state.records,
     groups: state.groups
+
   })
 }
 

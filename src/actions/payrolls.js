@@ -67,9 +67,14 @@ export const createPayroll = ( payrollData, history ) => {
     const sendablePayrollData = {
         id: payrollData.id,
         payPeriod: payrollData.payPeriod,
+
+        total: payrollData.groups,
+        records: payrollData.records
+
         total: payrollData.total ? payrollData.total.toFixed(2) : 0.00,
         records: payrollData.records,
         user_id: payrollData.userId
+
     }
     console.log("sendablePayrollData", sendablePayrollData)
     return fetch('http://localhost:3000/api/v1/payrolls', {
@@ -85,7 +90,7 @@ export const createPayroll = ( payrollData, history ) => {
       console.log("payrollupdateresp", resp)
       if (resp.error) {
         alert(resp.error)
-      }else {
+      }else{
       dispatch(addPayroll(resp.data))
       dispatch(resetNewPayrollForm())
       history.push(`/payrolls/${resp.data.id}`)
@@ -104,8 +109,12 @@ export const updatePayroll = ( payrollData, history, payRate ) => {
     const sendablePayrollData = {
         id: payrollData.id,
         payPeriod: payrollData.payPeriod,
+
+        records: payrollData.records
+
         total: payrollData.total.toFixed(2),
         records: payrollRecords
+
     }
     return fetch(`http://localhost:3000/api/v1/payrolls/${payrollData.id}`, {
       credentials: 'include',

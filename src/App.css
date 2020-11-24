@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+
+  background-color: purple;
+  color: silver;
+  min-height: 100vh;
+
   background-image: url("https://img-aws.ehowcdn.com/877x500p/cpi.studiod.com/ehowmedia/a05/qq/h7/ursa-major_-big-dipper-800x800.jpg");
   color: silver;
   min-height: 100vh;
@@ -7,6 +12,7 @@
 
 .App-logo {
   height: 40vmin;
+
 }
 
 .App-header {
@@ -23,6 +29,25 @@
 .App-link {
   color: #09d3ac;
 }
+
+
+.App-logo {
+  height: 40vmin;
+}
+
+.button1 {
+  color: purple;
+  background-color: darkgray;
+}
+
+.button2 {
+  color: red;
+  background-color: white;
+}
+
+.button3 {
+  color: green;
+  background-color: white;
 
 .button {/* Green */
   border: none;
@@ -64,6 +89,7 @@
 .doubleUnderline {
   text-decoration-line: underline;
   text-decoration-style: double;
+
 }
 
 .editLayout::after {
@@ -139,6 +165,30 @@ animation: fadeIn 1s; */
   color: black;
 }
 
+
+.more-padding-on-right {
+  padding-right: 10px;
+}
+
+.NavBar {
+  background-color: silver;
+  font-size: calc(10px + 2vmin);
+  min-height: 10vh;
+}
+
+.calendar {
+  margin-left: 37%;
+  margin-right: 37%;
+}
+
+.calendarRecord {
+  width: 100px;
+}
+
+.payrollCard {
+  margin-left: 35%;
+  margin-right: 35%;
+
 .material-icons.darkgray {
     float: left;
     /* padding: 20px; */
@@ -190,6 +240,7 @@ animation: fadeIn 1s; */
   padding: 50px;
   font-size: calc(8px + 2vmin);
   min-height: 10vh;
+
 }
 
   .popup {

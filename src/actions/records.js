@@ -61,8 +61,14 @@ export const getMyRecords = () => {
   }
 }
 
-export const createRecord = ( recordData, history ) => {
+export const createRecord = ( recordData, history, payrollId, payroll ) => {
+
+  function myPayrollAlert() {
+    alert("Must Create Payroll!!")
+  }
+
   return dispatch => {
+
     function myFunc(total, num) {
       return total + num;
     }
@@ -73,15 +79,24 @@ export const createRecord = ( recordData, history ) => {
     const workHours = workedGroups ? workedGroups.map(group =>
       parseFloat(group.attributes.hours)) : 0
     const add = workHours ? workHours.reduce(myFunc, 0) : 0
+    const month = recordData.workdate != null ? recordData.workdate.getUTCMonth() + 1 : ""
+    const day = recordData.workdate != null ? recordData.workdate.getUTCDate() : ""
+    const year = recordData.workdate != null ? recordData.workdate.getUTCFullYear() : ""
+    const newdate = year + "/" + month + "/" + day
+
+    const hoursArray = recordData.groups !== undefined && recordData.groups.length > 0 ?
+      recordData.groups.map(group =>
+      parseFloat(group.attributes.hours)) : 0
 
     const sendableRecordData = {
-        workdate: recordData.workdate,
-        totalHours: add,
+        workdate: newdate,
         groups: recordData.groups,
-        payroll_id: recordData.id
-    }
+        totalHours: hoursArray.length > 0 ? hoursArray.reduce(myFunc, 0) : 0,
+        payroll_id: recordData.payrollId
+      }
 
-    return fetch(`http://localhost:3000/api/v1/records`, {
+    return fetch('http://localhost:3000/api/v1/records', {
+
       credentials: 'include',
       method: 'POST',
       headers: {
@@ -91,14 +106,20 @@ export const createRecord = ( recordData, history ) => {
     })
     .then(r => r.json())
     .then(resp => {
-      console.log("resp", resp)
       if (resp.error) {
         alert(resp.error)
       }else{
-      dispatch(addRecord(resp))
+        if(resp.payroll !== undefined && resp.payroll[0] === "must exist"){
+          myPayrollAlert();
+          history.push("/payrolls/new")
+        }else{
+      dispatch(addRecord(resp.data))
       dispatch(resetRecordForm())
-      history.push(`records/${resp.id}`)
-     }
+      history.push({pathname: `/records/${resp.data.id}`,
+      state: recordData})
+      // history.push(`/records/${resp.data.id}`)
+        }
+      }
     })
   }
 }
@@ -107,10 +128,11 @@ export const updateRecord = ( recordData, history ) => {
   return dispatch => {
 
     const sendableRecordData = {
+        id: recordData.id,
         workdate: recordData.workdate,
-        totalHours: recordData.totalHours,
         groups: recordData.groups,
-        payroll_id: recordData.id
+        totalHours: recordData.totalHours,
+        payroll_id: recordData.payroll_id
     }
     return fetch(`http://localhost:3000/api/v1/records/${recordData.recordId}`, {
       credentials: 'include',
