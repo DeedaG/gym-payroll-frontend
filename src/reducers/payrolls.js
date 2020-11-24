@@ -6,7 +6,6 @@ export default (state = [], action) => {
       return action.payrolls
     case "ADD_PAYROLL":
       return state.concat(action.payroll)
-
     case "UPDATE_PAYROLL":
       return state.map(payroll => payroll.id === action.payroll.id ? action.payroll : payroll)
     case "DELETE_PAYROLL":

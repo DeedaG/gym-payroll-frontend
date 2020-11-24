@@ -5,6 +5,8 @@ import payrollForm from './reducers/payrollForm.js'
 import recordForm from './reducers/recordForm.js'
 import records from './reducers/records.js'
 import payrolls from './reducers/payrolls.js'
+import recordForm from './reducers/recordForm.js'
+import records from './reducers/records.js'
 import groups from './reducers/groups.js'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
@@ -16,11 +18,16 @@ const reducer = combineReducers({
   currentUser,
   loginForm,
   signupForm,
+  payrolls,
   payrollForm,
   recordForm,
   records,
+<<<<<<< HEAD
   groups,
   payrolls
+=======
+  groups
+>>>>>>> a252806b0ad52700013b2ac14120160e2d62bde9
 })
 
 // const composeEnhancer = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;

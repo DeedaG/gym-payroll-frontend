@@ -1,5 +1,5 @@
 import { resetNewPayrollForm } from './payrollForm.js'
-
+import  {deleteRecord } from './records.js'
 
 export const setMyPayrolls = payrolls => {
   return {
@@ -64,11 +64,17 @@ export const getMyPayrolls = () => {
 
 export const createPayroll = ( payrollData, history ) => {
   return dispatch => {
-    console.log(payrollData)
     const sendablePayrollData = {
+        id: payrollData.id,
         payPeriod: payrollData.payPeriod,
+<<<<<<< HEAD
         total: payrollData.groups,
         records: payrollData.records
+=======
+        total: payrollData.total ? payrollData.total.toFixed(2) : 0.00,
+        records: payrollData.records,
+        user_id: payrollData.userId
+>>>>>>> a252806b0ad52700013b2ac14120160e2d62bde9
     }
     console.log("sendablePayrollData", sendablePayrollData)
     return fetch('http://localhost:3000/api/v1/payrolls', {
@@ -81,6 +87,7 @@ export const createPayroll = ( payrollData, history ) => {
     })
     .then(r => r.json())
     .then(resp => {
+      console.log("payrollupdateresp", resp)
       if (resp.error) {
         alert(resp.error)
       }else{
@@ -92,15 +99,24 @@ export const createPayroll = ( payrollData, history ) => {
   }
 }
 
-export const updatePayroll = ( payrollData, history ) => {
+export const updatePayroll = ( payrollData, history, payRate ) => {
   return dispatch => {
-    console.log(payrollData)
+
+    const records = payrollData.records
+    const payrollRecords = records !== null ?
+      records.map(r => r.payroll_id = payrollData.id) : null
+
     const sendablePayrollData = {
         id: payrollData.id,
         payPeriod: payrollData.payPeriod,
+<<<<<<< HEAD
         records: payrollData.records
+=======
+        total: payrollData.total.toFixed(2),
+        records: payrollRecords
+>>>>>>> a252806b0ad52700013b2ac14120160e2d62bde9
     }
-    return fetch(`http://localhost:3000/api/v1/payrolls/${payrollData.payrollId}`, {
+    return fetch(`http://localhost:3000/api/v1/payrolls/${payrollData.id}`, {
       credentials: 'include',
       method: 'PATCH',
       headers: {
@@ -110,17 +126,19 @@ export const updatePayroll = ( payrollData, history ) => {
     })
     .then(r => r.json())
     .then(resp => {
+      console.log("resp", resp)
       if (resp.error) {
         alert(resp.error)
-      }else {
-      dispatch(updatePayrollSuccess(resp.data))
-      history.push(`/payrolls/${resp.data.id}`)
+      }else
+      {
+      history.push(`/payrolls/${resp.id}/edit`)
+      dispatch(updatePayrollSuccess(resp))
      }
     })
   }
 }
 
-export const deletePayroll = (payrollId, history) => {
+export const deletePayroll = (payroll, payrollId, history) => {
   return dispatch => {
     return fetch(`http://localhost:3000/api/v1/payrolls/${payrollId}`, {
       credentials: "include",
@@ -135,6 +153,7 @@ export const deletePayroll = (payrollId, history) => {
           alert(resp.error)
         } else {
           dispatch(deletePayrollSuccess(payrollId))
+          payroll.records.map(r => dispatch(deleteRecord(r.id, history)))
           history.push(`/payrolls`)
         }
       })

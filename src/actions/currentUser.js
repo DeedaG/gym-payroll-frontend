@@ -1,5 +1,7 @@
 import { resetLoginForm } from "./loginForm.js";
 import { resetSignupForm } from "./signupForm.js"
+import { getMyPayrolls } from "./payrolls.js"
+import { getMyRecords } from "./records.js"
 import { getMyGroups} from './groups.js'
 
 export const setCurrentUser = user => {
@@ -35,6 +37,9 @@ export const login = (info, history) => {
           alert(response.error)
         } else {
           dispatch(setCurrentUser(response.data))
+          dispatch(getMyPayrolls())
+          dispatch(getMyRecords())
+          dispatch(getMyGroups())
           dispatch(resetLoginForm())
           history.push('/')
         }
@@ -101,6 +106,8 @@ export const login = (info, history) => {
             alert(response.error)
           } else {
             dispatch(setCurrentUser(response.data))
+            dispatch(getMyPayrolls())
+            dispatch(getMyRecords())
             dispatch(getMyGroups())
           }
         })

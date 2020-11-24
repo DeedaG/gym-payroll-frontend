@@ -1,8 +1,18 @@
 .App {
   text-align: center;
+<<<<<<< HEAD
   background-color: purple;
   color: silver;
   min-height: 100vh;
+=======
+  background-image: url("https://img-aws.ehowcdn.com/877x500p/cpi.studiod.com/ehowmedia/a05/qq/h7/ursa-major_-big-dipper-800x800.jpg");
+  color: silver;
+  min-height: 100vh;
+}
+
+.App-logo {
+  height: 40vmin;
+>>>>>>> a252806b0ad52700013b2ac14120160e2d62bde9
 }
 
 .App-header {
@@ -20,6 +30,7 @@
   color: #09d3ac;
 }
 
+<<<<<<< HEAD
 .App-logo {
   height: 40vmin;
 }
@@ -37,6 +48,48 @@
 .button3 {
   color: green;
   background-color: white;
+=======
+.button {/* Green */
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {
+  /* border-radius: 12px; */
+  padding: 20px;}
+
+.button2 {
+  /* border-radius: 12px; */
+  padding: 5px;
+  color: green;
+}
+
+.button3 {
+  /* border-radius: 12px; */
+  padding: 5px;
+  color: red;
+}
+
+.button4 {
+  /* border-radius: 12px; */
+  padding: 5px;
+  color: black;
+}
+
+.calendar {
+  padding: 350px;
+  width: 30%;
+}
+
+.doubleUnderline {
+  text-decoration-line: underline;
+  text-decoration-style: double;
+>>>>>>> a252806b0ad52700013b2ac14120160e2d62bde9
 }
 
 .Home {
@@ -46,6 +99,7 @@
   color: black;
 }
 
+<<<<<<< HEAD
 .more-padding-on-right {
   padding-right: 10px;
 }
@@ -68,4 +122,124 @@
 .payrollCard {
   margin-left: 35%;
   margin-right: 35%;
+=======
+.material-icons.darkgray {
+    padding: 20px;
+    position: relative;
+    animation: stars 3s linear;
+  color: #696969; }
+
+  @keyframes stars {
+    0%   {color:#696969; left:0px; bottom:0px;}
+    50%  {color:purple; left:140px; bottom:300px;}
+  }
+
+.material-icons.money {
+  padding: 20px;
+  position: relative;
+  color: #696969; }
+
+.material-icons.edit {
+  margin-left: 30px;
+  color: #696969;
+  font-size: 30px;
+  float: left;}
+
+  .moveLeft {
+    float: left;
+    margin-left: 250px;
+    margin-top: -25px;
+  }
+
+  .moveRight {
+    text-align: center;
+    margin-top: 125px;
+  }
+
+  .column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
 }
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.NavBar {
+  text-align: left;
+  padding: 40px;
+  background-color: silver;
+  font-size: calc(10px + 2vmin);
+  min-height: 5vh;
+  border: 5px solid black;
+  border-style: solid;
+}
+
+.PayrollList {
+  color: silver;
+  text-align: left;
+  padding: 50px;
+  font-size: calc(8px + 2vmin);
+  min-height: 10vh;
+>>>>>>> a252806b0ad52700013b2ac14120160e2d62bde9
+}
+
+  .popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+
+  /* Popup arrow */
+  .popup .popuptext::after {
+    /* content: ""; */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+  }
+
+
+  .underline {
+    font-size: calc(10px + 2vmin);
+    color: white;
+    width: 400px;
+    padding: 10px;
+    text-align: left;
+    margin-left: 50px;
+  }

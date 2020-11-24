@@ -1,41 +1,44 @@
 import React from 'react'
 import { updatePayroll, deletePayroll } from '../actions/payrolls.js'
-import { setFormDataForEdit, resetNewPayrollForm } from '../actions/payrollForm.js'
+import { setFormDataForEdit, resetPayrollForm } from '../actions/payrollForm.js'
 import { connect } from 'react-redux'
-import NewPayrollForm from '../components/NewPayrollForm.js'
-
+import EditPayrollForm from '../components/EditPayrollForm.js'
 
 class EditPayrollContainer extends React.Component {
 
   componentDidMount() {
-    this.props.payroll && this.props.setFormDataForEdit(this.props.payroll)
+    this.props.payroll && this.props.setFormDataForEdit(this.props.payroll, this.props.payRate)
   }
 
   componentDidUpdate(prevProps) {
     this.props.payroll && !prevProps.payroll &&
-    this.props.setFormDataForEdit(this.props.payroll)
+    this.props.setFormDataForEdit(this.props.payroll, this.props.payRate)
   }
 
   componentWillUnmount() {
-    this.props.resetNewPayrollForm()
+    this.props.resetPayrollForm()
   }
 
-  handleSubmit = (formData) => {
-    const { updatePayroll, payroll, history } = this.props
+  handleSubmit = (formData ) => {
+    const { updatePayroll, history, payRate } = this.props
     updatePayroll({
-      payrollId: payroll.id,
-      ...formData
+      payrollId: this.props.match.params.id,
+      ...formData, payRate
     }, history)
   }
   render() {
     const { history, payroll, deletePayroll } = this.props
     const payrollId = payroll ? payroll.id : null
     return <>
-        <NewPayrollForm editMode handleSubmit={this.handleSubmit} />
+        <EditPayrollForm payroll={payroll}/>
         <br/>
-        <button style={{color:"red"}} onClick={()=>deletePayroll(payrollId, history)}>Delete Payroll</button>
-      </>
+        <button
+          className="button button3"
+          onClick={()=>{deletePayroll(payroll, payrollId, history);
+            window.location.assign(`/payrolls`)}}>Delete Payroll
+        </button>
+  </>
 
   }
 };
-export default connect(null, {updatePayroll, deletePayroll, setFormDataForEdit, resetNewPayrollForm })(EditPayrollContainer);
+export default connect(null, {updatePayroll, deletePayroll, setFormDataForEdit, resetPayrollForm })(EditPayrollContainer);
