@@ -1,9 +1,8 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
+  background-color: purple;
+  color: silver;
+  min-height: 100vh;
 }
 
 .App-header {
@@ -21,10 +20,23 @@
   color: #09d3ac;
 }
 
-.NavBar {
-  background-color: silver;
-  font-size: calc(10px + 2vmin);
-  min-height: 10vh;
+.App-logo {
+  height: 40vmin;
+}
+
+.button1 {
+  color: purple;
+  background-color: darkgray;
+}
+
+.button2 {
+  color: red;
+  background-color: white;
+}
+
+.button3 {
+  color: green;
+  background-color: white;
 }
 
 .Home {
@@ -34,8 +46,26 @@
   color: black;
 }
 
-.App {
-  background-color: purple;
-  color: silver;
-  min-height: 100vh;
+.more-padding-on-right {
+  padding-right: 10px;
+}
+
+.NavBar {
+  background-color: silver;
+  font-size: calc(10px + 2vmin);
+  min-height: 10vh;
+}
+
+.calendar {
+  margin-left: 37%;
+  margin-right: 37%;
+}
+
+.calendarRecord {
+  width: 100px;
+}
+
+.payrollCard {
+  margin-left: 35%;
+  margin-right: 35%;
 }
