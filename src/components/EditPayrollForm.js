@@ -10,11 +10,13 @@ const EditPayrollForm = ({ formData, updatePayrollForm, payroll, userId }) => {
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"/>
           <span className="material-icons edit">
-        edit
-      </span>
+            edit
+          </span>
       <h3 className="underline">...Editing Pay Period: {formData.payPeriod}</h3>
-      <h3>current total : ${formData.total}</h3>
-      <NewRecord payroll={payroll}/>
+      <div className="editLayout">
+        <div className="editLayoutLeft">Current Total : ${formData.total}</div>
+        <NewRecord payroll={payroll}/>
+      </div>
       </>
   )};
 

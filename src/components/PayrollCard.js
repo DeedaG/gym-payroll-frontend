@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const PayrollCard = ({payroll, payRate, payrolls}) => {
+const PayrollCard = ({payroll, payRate, payrolls }) => {
 
   const myFunc = (total, num) => {
     return total + num;
@@ -29,24 +29,27 @@ const PayrollCard = ({payroll, payRate, payrolls}) => {
     <div className="row">
       <div className="moveLeft">
         Pay Period:<h1>{payroll.attributes.payPeriod}</h1>
-      Payroll Totals:<h2>{calcTotRecordHrs} hours</h2>
+        Payroll Totals:<h2>{calcTotRecordHrs} hours</h2>
         <h1 className="doubleUnderline">$ {calcGrandT}</h1>
         Cumulative Total: <h2 className="doubleUnderline">${ttd}</h2>
         <Link to ={`/payrolls/${payroll.id}/edit`}
-          key={payroll.attributes.id} ><button className="button button2">Add/Edit</button>
+          key={payroll.attributes.id} ><button className="button button2">Add/Edit/Delete</button>
         </Link>
       </div>
       <div className="moveRight">
 
-        Daily Totals: {payroll.attributes.records.map(record =>
-          <li key={record.id}>{record.workdate} {record.totalHours} hours</li>
+        <h3>Daily Totals: <br></br>{payroll.attributes.records.map(record =>
+          <ul key={record.id}>
+            {console.log("payroll.attributes.records", payroll.attributes.records)}
+
+            {record.workdate} {record.totalHours} hours</ul>
           )
           .sort(function (a, b) {
                 if (a.props.children[0] > b.props.children[0]) return 1;
                 if (a.props.children[0] < b.props.children[0]) return -1;
                 return 0;
               })
-        }<br></br>
+        }</h3><br></br>
       </div>
     </div>
      :

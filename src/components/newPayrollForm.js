@@ -23,11 +23,6 @@ class NewPayrollForm extends React.Component {
     },
   this.props.getCurrentUser())
 
-  // handleChange = event => {
-  //   const { name, value } = event
-  //   updateNewPayrollForm(name,value)
-  // }
-debugger
 render() {
   return (
     <form onSubmit = {event => {
@@ -36,7 +31,7 @@ render() {
       }}>
       <br></br>
         <div className="popup" >
-          <button onClick={this.myFunction} className="popup button button4">Enter Pay Period</button>
+          <button onClick={this.myFunction} className="popup button button4">Select Pay Period</button>
           <span className="popuptext" id="myPopup">
             <Calendar
               placeholder="YYYY-MM-DD"
@@ -45,9 +40,11 @@ render() {
               value={this.state.payPeriod} />
           </span>
         </div>
+        <br></br>
         <input
+          style={{color: "green"}}
           type="submit"
-          value="Enter"
+          value="Create Payroll"
         /><br/>
       </form>
   )}

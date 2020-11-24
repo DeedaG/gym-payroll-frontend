@@ -26,11 +26,12 @@ class EditPayrollContainer extends React.Component {
       ...formData, payRate
     }, history)
   }
+
   render() {
     const { history, payroll, deletePayroll } = this.props
     const payrollId = payroll ? payroll.id : null
     return <>
-        <EditPayrollForm payroll={payroll}/>
+        <EditPayrollForm payroll={payroll} payrollId={payrollId} history={history}/>
         <br/>
         <button
           className="button button3"

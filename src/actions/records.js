@@ -66,19 +66,21 @@ export const createRecord = ( recordData, history ) => {
     function myFunc(total, num) {
       return total + num;
     }
-    const workedGroups = recordData.groups ? recordData.groups : null
-    // console.log("workedGroups", workedGroups)
+
+    const workedGroups = recordData != null ?
+      recordData.groups ? recordData.groups : null
+      : null
     const workHours = workedGroups ? workedGroups.map(group =>
       parseFloat(group.attributes.hours)) : 0
     const add = workHours ? workHours.reduce(myFunc, 0) : 0
+
     const sendableRecordData = {
         workdate: recordData.workdate,
         totalHours: add,
         groups: recordData.groups,
         payroll_id: recordData.id
     }
-    // debugger
-    console.log("sendableRecordData", sendableRecordData)
+
     return fetch(`http://localhost:3000/api/v1/records`, {
       credentials: 'include',
       method: 'POST',
@@ -103,7 +105,7 @@ export const createRecord = ( recordData, history ) => {
 
 export const updateRecord = ( recordData, history ) => {
   return dispatch => {
-    console.log(recordData)
+
     const sendableRecordData = {
         workdate: recordData.workdate,
         totalHours: recordData.totalHours,

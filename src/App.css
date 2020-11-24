@@ -66,6 +66,72 @@
   text-decoration-style: double;
 }
 
+.editLayout::after {
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+.editLayoutLeft {
+  font-size: calc(10px + 2vmin);
+  color: white;
+  width: 400px;
+  padding: 10px;
+  text-align: left;
+  margin-left: 50px;
+  /* margin-right: 20px; */
+}
+
+.editLayoutCenter {
+
+}
+
+/* .guide2 {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+} */
+
+/* The actual popup */
+/* .guide2 .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+} */
+
+/* Popup arrow */
+/* .guide2 .popuptext::after { */
+  /* content: ""; */
+  /* position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+} */
+
+
+/* Toggle this class - hide and show the popup */
+/* .guide2 .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+animation: fadeIn 1s; */
+/* } */
+
 .Home {
   background-color: darkgray;
   font-size: calc(10px + 2vmin);
@@ -74,10 +140,12 @@
 }
 
 .material-icons.darkgray {
-    padding: 20px;
+    float: left;
+    /* padding: 20px; */
+    /* margin-bottom: 200px; */
     position: relative;
     animation: stars 3s linear;
-  color: #696969; }
+    color: #696969; }
 
   @keyframes stars {
     0%   {color:#696969; left:0px; bottom:0px;}
@@ -106,22 +174,9 @@
     margin-top: 125px;
   }
 
-  .column {
-  float: left;
-  width: 33.33%;
-  padding: 5px;
-}
-
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
 .NavBar {
   text-align: left;
-  padding: 40px;
+  /* padding: 40px; */
   background-color: silver;
   font-size: calc(10px + 2vmin);
   min-height: 5vh;
@@ -182,7 +237,6 @@
     -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
   }
-
 
   .underline {
     font-size: calc(10px + 2vmin);

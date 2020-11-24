@@ -55,7 +55,7 @@ class NewRecord extends React.Component {
   return (
     <div >
       <div className="popup" >
-        <button onClick={this.myFunction} className="popup button button4">Choose Day</button>
+        <button onClick={this.myFunction} className="popup button button4">Select Work Day</button>
         <span className="popuptext" id="myPopup">
           <Calendar
             name="workdate"
@@ -66,7 +66,7 @@ class NewRecord extends React.Component {
       <div className="guide2">
         <br />
         <GroupCheckBox />
-        <button className="button button2" onClick={this.handleClick}>Add Work to Time Card</button>
+        <button className="button button2" onClick={this.handleClick}>Add Hours to Time Card</button>
       </div>
     </div>
      )

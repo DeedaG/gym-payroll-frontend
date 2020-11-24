@@ -9,6 +9,11 @@ class NewRecord extends React.Component {
     checkedGroups: []
   }
 
+  myFunction = () => {
+    let popup = document.getElementById("myPopup2");
+    popup.classList.toggle("show");
+  }
+
   handleChangedGroups(e, value){
     console.log("target =", e.target.checked)
     console.log("state is", this.state)
@@ -34,18 +39,21 @@ class NewRecord extends React.Component {
 // debugger
   return (
 
-    <div className="guide2">
-      <label>Choose Classes</label>
-      {this.props.groups.map((group, index) =>
-     <li key = {group.id}>{group.attributes.name}
-     <><input
-       name="groups"
-       type="checkbox"
-       onClick={(e)=>this.handleChangedGroups(e,group)}
-      />{group.attributes.hours}<br></br></></li>)}
+    <div className="popup">
+      <button onClick={this.myFunction} className="popup button button4">Choose Classes</button>
+      <span className="popuptext" id="myPopup2">
+        {this.props.groups.map((group, index) =>
+           <li key = {group.id}>{group.attributes.name}
+             <><input
+               name="groups"
+               type="checkbox"
+               onClick={(e)=>this.handleChangedGroups(e,group)}
+             />{group.attributes.hours}<br></br></>
+         </li>)}
+      </span>
     </div>
-     )
-    }
+    )
+   }
   }
 
   const mapStateToProps = state => {
