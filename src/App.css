@@ -48,6 +48,7 @@
 .button3 {
   color: green;
   background-color: white;
+}
 
 .button {/* Green */
   border: none;
@@ -188,6 +189,7 @@ animation: fadeIn 1s; */
 .payrollCard {
   margin-left: 35%;
   margin-right: 35%;
+}
 
 .material-icons.darkgray {
     float: left;

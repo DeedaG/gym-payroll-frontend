@@ -67,10 +67,9 @@ export const createPayroll = ( payrollData, history ) => {
     const sendablePayrollData = {
         id: payrollData.id,
         payPeriod: payrollData.payPeriod,
-
-        total: payrollData.groups,
-        records: payrollData.records
-
+        // total: payrollData.groups,
+        // records: payrollData.records
+        //
         total: payrollData.total ? payrollData.total.toFixed(2) : 0.00,
         records: payrollData.records,
         user_id: payrollData.userId
@@ -109,9 +108,7 @@ export const updatePayroll = ( payrollData, history, payRate ) => {
     const sendablePayrollData = {
         id: payrollData.id,
         payPeriod: payrollData.payPeriod,
-
-        records: payrollData.records
-
+        // records: payrollData.records
         total: payrollData.total.toFixed(2),
         records: payrollRecords
 

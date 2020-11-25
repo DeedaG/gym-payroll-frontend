@@ -5,8 +5,6 @@ import payrollForm from './reducers/payrollForm.js'
 import recordForm from './reducers/recordForm.js'
 import records from './reducers/records.js'
 import payrolls from './reducers/payrolls.js'
-import recordForm from './reducers/recordForm.js'
-import records from './reducers/records.js'
 import groups from './reducers/groups.js'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
@@ -22,10 +20,6 @@ const reducer = combineReducers({
   payrollForm,
   recordForm,
   records,
-
-  groups,
-  payrolls
-
   groups
 
 })

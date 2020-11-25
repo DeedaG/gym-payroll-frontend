@@ -35,10 +35,10 @@ export const setFormDataForEdit = (payroll, payRate) => {
   const payrollFormData = {
     payPeriod: payroll.attributes.payPeriod,
     total: payroll.attributes.total,
-    total: payroll.attributes.records ?
-    (payroll.attributes.records.map(r
-      => parseFloat(r.totalHours)).reduce(myFunc, 0)) * payRate
-      : 0,
+    // total: payroll.attributes.records ?
+    // (payroll.attributes.records.map(r
+    //   => parseFloat(r.totalHours)).reduce(myFunc, 0)) * payRate
+    //   : 0,
     records: payroll.attributes.records
   }
   return {

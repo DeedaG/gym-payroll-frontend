@@ -13,14 +13,9 @@ import './App.css';
 import NewRecord from './components/NewRecord.js'
 import EditPayrollContainer from './containers/EditPayrollContainer.js'
 import NewPayrollContainer from './containers/NewPayrollContainer.js'
-
-import EditPayrollContainer from './containers/EditPayrollContainer.js'
 import PayrollCard from './components/PayrollCard.js'
-import Records from './components/Records.js'
-
+// import Records from './components/Records.js'
 import RecordCard from './components/RecordCard.js'
-import PayrollCard from './components/PayrollCard.js'
-
 import Groups from './components/Groups.js'
 import Payrolls from './components/Payrolls.js'
 
@@ -34,9 +29,6 @@ class App extends React.Component {
 
 
   render() {
-
-    const { loggedIn, payrolls, records } = this.props
-
     const { loggedIn, payrolls, records, payRate } = this.props
 
   return (
@@ -49,28 +41,13 @@ class App extends React.Component {
 
         <Route exact path='/payrolls/new' component={NewPayrollContainer}/>
         <Route exact path='/payrolls' component={Payrolls}/>
-        <Route exact path='/records/new' component={Records}/>
-        <Route exact path='/groups' component={Groups}/>
-          <Route exact path='/payrolls/:id' render={props => {
-                const payroll = payrolls.find(payroll => payroll.id === props.match.params.id)
-                  return <PayrollCard payroll={payroll} {...props}/>
-                  }
-                }></Route>
-          <Route exact path='/payrolls/:id/edit' render={props => {
-          const payroll = payrolls.find(payroll => payroll.id ===
-            props.match.params.id)
-          return <EditPayrollContainer payroll={payroll} {...props}/>
-          }
-        }></Route>
-
-        <Route exact path='/groups' component={Groups}/>
-        <Route exact path='/payrolls' component={Payrolls}/>
         <Route exact path='/records/new' component={NewRecord}/>
+        <Route exact path='/groups' component={Groups}/>
+
         <Route exact path='/records/:id' render={props => {
           const record = records.find(record => record.id === props.match.params.id)
             return <RecordCard record={record} {...props}/>
           }}></Route>
-        <Route exact path='/payrolls/new' component={NewPayrollContainer}/>
         <Route exact path='/payrolls/:id' render={props => {
           const payroll = payrolls.find(payroll => payroll.id === props.match.params.id)
             return <PayrollCard payrolls={payrolls} records={records} payroll={payroll} payRate={payRate} {...props}/>
@@ -100,13 +77,8 @@ return ({
   loggedIn: !!state.currentUser,
     payRate: state.currentUser ? state.currentUser.attributes.payRate : 12,
     payrolls: state.payrolls,
-
     groups: state.groups,
     records: state.records
-
-    records: state.records,
-    groups: state.groups
-
   })
 }
 
