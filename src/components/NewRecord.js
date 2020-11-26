@@ -36,6 +36,10 @@ class NewRecord extends React.Component {
   }
 
   handleClick = () => {
+    if (this.props.recordData.payroll_id == null){
+      this.props.recordData.payroll_id = this.props.match.params.id
+    }
+    debugger
       this.props.createRecord({
         ...this.props.recordData,
         ...this.state.payrollData
