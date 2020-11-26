@@ -27,7 +27,6 @@ class App extends React.Component {
     this.props.getCurrentUser()
     }
 
-
   render() {
     const { loggedIn, payrolls, records, payRate } = this.props
 
@@ -54,15 +53,16 @@ class App extends React.Component {
             }
           }></Route>
         <Route exact path='/payrolls/:id/edit' render={props => {
-        const payroll = payrolls.find(payroll => payroll.id ===
-          props.match.params.id)
-        return <EditPayrollContainer payRate={payRate} payroll={payroll} {...props}/>
-        }}/>
+          const payroll = payrolls.find(payroll => payroll.id ===
+            props.match.params.id)
+          return <EditPayrollContainer payRate={payRate} payroll={payroll} {...props}/>
+        }}><
+        /Route>
       <Route exact path='/payrolls/:id/delete' render={props => {
         const payroll = payrolls.find(payroll => payroll.id ===
           props.match.params.id)
-        return <EditPayrollContainer payroll={payroll} {...props}/>
-        }}/>
+        return <EditPayrollContainer payroll={payroll} {...props}/>}}>
+      </Route>
 
 
       </Switch>
