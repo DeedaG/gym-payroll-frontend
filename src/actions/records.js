@@ -72,13 +72,13 @@ export const createRecord = ( recordData, history, payrollId, payroll ) => {
     function myFunc(total, num) {
       return total + num;
     }
-
-    const workedGroups = recordData != null ?
-      recordData.groups ? recordData.groups : null
-      : null
-    const workHours = workedGroups ? workedGroups.map(group =>
-      parseFloat(group.attributes.hours)) : 0
-    const add = workHours ? workHours.reduce(myFunc, 0) : 0
+console.log("recordData", recordData)
+    // const workedGroups = recordData != null ?
+    //   recordData.groups ? recordData.groups : null
+    //   : null
+    // const workHours = workedGroups ? workedGroups.map(group =>
+    //   parseFloat(group.attributes.hours)) : 0
+    // const add = workHours ? workHours.reduce(myFunc, 0) : 0
     const month = recordData.workdate != null ? recordData.workdate.getUTCMonth() + 1 : ""
     const day = recordData.workdate != null ? recordData.workdate.getUTCDate() : ""
     const year = recordData.workdate != null ? recordData.workdate.getUTCFullYear() : ""
@@ -92,7 +92,7 @@ export const createRecord = ( recordData, history, payrollId, payroll ) => {
         workdate: newdate,
         groups: recordData.groups,
         totalHours: hoursArray.length > 0 ? hoursArray.reduce(myFunc, 0) : 0,
-        payroll_id: recordData.payrollId
+        payroll_id: recordData.payroll_id
       }
 
     return fetch('http://localhost:3000/api/v1/records', {
